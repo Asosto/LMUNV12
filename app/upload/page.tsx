@@ -585,7 +585,7 @@ export default function UploadPage() {
                 <a href="#" className="block text-gray-400 hover:text-white transition-colors">
                   FAQs
                 </a>
-                <Link href="/admin" className="block text-gray-400 hover:text-white transition-colors">
+                <Link href="/admin/dashboard" className="block text-gray-400 hover:text-white transition-colors">
                   Admin
                 </Link>
               </div>
