@@ -9,6 +9,8 @@ import { Input } from "@/components/ui/input"
 import { Globe, Award, Star, ArrowRight, Play, CheckCircle, BookOpen, Target } from "lucide-react"
 import Link from "next/link"
 import { MobileNav } from "@/components/mobile-nav"
+import { MainNav } from "@/components/MainNav"
+import Image from "next/image"
 
 export default function HomePage() {
   const [email, setEmail] = useState("")
@@ -116,44 +118,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <Globe className="w-8 h-8 text-blue-400" />
-              <span className="text-xl font-bold text-white">Global MUN</span>
-            </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/" className="text-blue-400 font-medium">
-                Home
-              </Link>
-              <Link href="/about" className="text-white hover:text-blue-400 transition-colors">
-                About
-              </Link>
-              <Link href="/committees" className="text-white hover:text-blue-400 transition-colors">
-                Committees
-              </Link>
-              <Link href="/schedule" className="text-white hover:text-blue-400 transition-colors">
-                Schedule
-              </Link>
-              <Link href="/gallery" className="text-white hover:text-blue-400 transition-colors">
-                Gallery
-              </Link>
-              <Link href="/conference-info" className="text-white hover:text-blue-400 transition-colors">
-                Conference Info
-              </Link>
-              <Link href="/resources" className="text-white hover:text-blue-400 transition-colors">
-                Resources
-              </Link>
-              <Link href="/upload" className="text-white hover:text-blue-400 transition-colors">
-                Upload Payment
-              </Link>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">Register Now</Button>
-            </div>
-            <MobileNav />
-          </div>
-        </div>
-      </nav>
+      <MainNav />
 
       {/* Hero Section with Video Background */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -167,12 +132,12 @@ export default function HomePage() {
             playsInline
             className="absolute min-w-full min-h-full object-cover"
           >
-            <source src="/placeholder.mp4" type="video/mp4" />
+            <source src="/lmun2.mp4" type="video/mp4" />
             {/* Fallback for browsers that don't support video */}
             Your browser does not support the video tag.
           </video>
           {/* Overlay to darken video and add gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-purple-900/70 backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-900/70 backdrop-blur-sm"></div>
         </div>
 
         <motion.div
@@ -188,12 +153,12 @@ export default function HomePage() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-400/30">
               <Play className="w-4 h-4 mr-2" />
-              Live & Virtual Conferences
+              Most Prestigious Conferences
             </Badge>
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
               FROM LOCAL
-              <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent">
                 LEADERS TO GLOBAL
               </span>
               <span className="block text-white">DIPLOMATS</span>
@@ -212,7 +177,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg"
+                className="bg-white/10 hover:text-gray-400 border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg"
               >
                 Learn More
               </Button>
@@ -240,7 +205,7 @@ export default function HomePage() {
               <span className="text-white font-medium">Google</span>
               <div className="flex space-x-1">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                  <Star key={i} className="w-5 h-5 fill-blue-400 text-blue-400" />
                 ))}
               </div>
               <span className="text-white font-bold">5.0</span>
@@ -258,7 +223,7 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">HOW TO JOIN THE GLOBAL MUN</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">HOW TO JOIN LMUN</h2>
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
               Follow these simple steps to secure your place in the world's most prestigious Model United Nations
               conference
@@ -524,7 +489,7 @@ export default function HomePage() {
             Your browser does not support the video tag.
           </video>
           {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-purple-600/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-800/90 to-blue/90"></div>
         </div>
 
         <div className="container mx-auto px-6 text-center relative z-10">
@@ -540,7 +505,7 @@ export default function HomePage() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">Ready to Shape the Future?</h2>
             <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
               Join thousands of delegates who have transformed their leadership skills and built lifelong connections
-              through Global MUN conferences.
+              through LMUN conferences.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg">
@@ -565,8 +530,8 @@ export default function HomePage() {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <Globe className="w-8 h-8 text-blue-400" />
-                <span className="text-xl font-bold text-white">Global MUN</span>
+              <Image src="/logo.png" alt="LMUN Logo" width={70} height={30} />
+                <span className="text-4xl font-bold text-white">LMUN</span>
               </div>
               <p className="text-gray-400">
                 Empowering the next generation of global leaders through diplomatic education and international
@@ -635,7 +600,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-            <p className="text-gray-400">© 2025 Global MUN. All rights reserved.</p>
+            <p className="text-gray-400">© 2026 LMUN. All rights reserved.</p>
           </div>
         </div>
       </footer>

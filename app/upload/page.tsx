@@ -29,6 +29,8 @@ import Link from "next/link"
 import { MobileNav } from "@/components/mobile-nav"
 import { v4 as uuidv4 } from 'uuid';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import Image from "next/image"
+import { Footer } from "@/components/Footer"
 
 export default function UploadPage() {
   const [formData, setFormData] = useState({
@@ -243,8 +245,8 @@ export default function UploadPage() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
-              <Globe className="w-8 h-8 text-blue-400" />
-              <span className="text-xl font-bold text-white">Global MUN</span>
+            <Image src="/logo.png" alt="LMUN Logo" width={60} height={20} />
+              <span className="text-3xl font-bold text-white">LMUN</span>
             </Link>
             <div className="hidden md:flex items-center space-x-8">
               <Link href="/" className="text-white hover:text-blue-400 transition-colors">
@@ -301,7 +303,7 @@ export default function UploadPage() {
             </h1>
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Secure your spot at Global MUN 2025 by uploading your payment confirmation. Our team will verify your
+              Secure your spot at LMUN 2026 by uploading your payment confirmation. Our team will verify your
               payment and send you a confirmation within 48 hours.
             </p>
           </motion.div>
@@ -540,79 +542,7 @@ export default function UploadPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 py-12">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Globe className="w-8 h-8 text-blue-400" />
-                <span className="text-xl font-bold text-white">Global MUN</span>
-              </div>
-              <p className="text-gray-400">
-                Empowering the next generation of global leaders through diplomatic education and international
-                cooperation.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-white mb-4">Quick Links</h3>
-              <div className="space-y-2">
-                <Link href="/about" className="block text-gray-400 hover:text-white transition-colors">
-                  About
-                </Link>
-                <Link href="/committees" className="block text-gray-400 hover:text-white transition-colors">
-                  Committees
-                </Link>
-                <Link href="/schedule" className="block text-gray-400 hover:text-white transition-colors">
-                  Schedule
-                </Link>
-                <Link href="/gallery" className="block text-gray-400 hover:text-white transition-colors">
-                  Gallery
-                </Link>
-                <Link href="/upload" className="block text-gray-400 hover:text-white transition-colors">
-                  Upload Payment
-                </Link>
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold text-white mb-4">Support</h3>
-              <div className="space-y-2">
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  Help Center
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  Contact Us
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  FAQs
-                </a>
-                <Link href="/admin/dashboard" className="block text-gray-400 hover:text-white transition-colors">
-                  Admin
-                </Link>
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold text-white mb-4">Connect</h3>
-              <div className="space-y-2">
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  LinkedIn
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  Twitter
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  Instagram
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  Facebook
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-            <p className="text-gray-400">© 2025 Global MUN. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

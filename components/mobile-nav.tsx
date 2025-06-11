@@ -33,7 +33,7 @@ export function MobileNav() {
       <SheetContent side="right" className="bg-slate-900/95 backdrop-blur-md border-slate-800 p-0">
         <div className="flex flex-col h-full">
           <div className="p-6 border-b border-slate-800 flex justify-between items-center">
-            <div className="font-bold text-xl text-white">Global MUN</div>
+            <div className="font-bold text-xl text-white">LMUN</div>
             <Button variant="ghost" size="icon" onClick={() => setOpen(false)} className="text-white">
               <X className="h-6 w-6" />
             </Button>
