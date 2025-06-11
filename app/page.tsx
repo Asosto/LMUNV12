@@ -126,13 +126,16 @@ export default function HomePage() {
         <div className="absolute inset-0 z-0">
           <video
             ref={heroVideoRef}
+            poster="/lmun-poster.jpg"
             autoPlay
             muted
             loop
             playsInline
+            preload="auto"
             className="absolute min-w-full min-h-full object-cover"
           >
-            <source src="/lmun2.mp4" type="video/mp4" />
+            <source src="/lmun2.webm" type="video/webm" />
+            <source src="/lmun2-optimized.mp4" type="video/mp4" />
             {/* Fallback for browsers that don't support video */}
             Your browser does not support the video tag.
           </video>
