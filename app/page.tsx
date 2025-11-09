@@ -41,7 +41,7 @@ export default function HomePage() {
     {
       step: "01",
       title: "Choose Your Committee",
-      description: "Select from our diverse range of UN committees and specialized agencies",
+      description: "Select from our diverse range of MUN committees and specialized agencies",
       icon: <Target className="w-8 h-8" />,
     },
     {
@@ -156,19 +156,20 @@ export default function HomePage() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-400/30">
               <Play className="w-4 h-4 mr-2" />
-              Most Prestigious Conferences
+              30th anniversary
             </Badge>
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              FROM LOCAL
+            LINCOLN
               <span className="block bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent">
-                LEADERS TO GLOBAL
+              MODEL UNITED
               </span>
-              <span className="block text-white">DIPLOMATS</span>
+              <span className="block text-white">NATIONS</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Join the world's most prestigious Model United Nations conference. Develop critical thinking, public
+              Join Costa Rica's leading Model United Nations conference in celebrating its 30th anniversary this march 7th and 8th, where you will
+              develop critical thinking, public
               speaking, and diplomatic skills while addressing real-world challenges alongside future global leaders.
             </p>
 
@@ -186,26 +187,10 @@ export default function HomePage() {
               </Button>
             </div>
 
-            {/* Email Signup */}
-            <div className="max-w-md mx-auto">
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-                <h3 className="text-white font-semibold mb-4">Get Conference Updates</h3>
-                <div className="flex flex-col sm:flex-row gap-2">
-                  <Input
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
-                  />
-                  <Button className="bg-blue-600 hover:bg-blue-700">Subscribe</Button>
-                </div>
-                <p className="text-xs text-gray-400 mt-2">We'll never share your information</p>
-              </div>
-            </div>
-
+            
             {/* Google Rating */}
             <div className="flex items-center justify-center mt-8 space-x-2">
-              <span className="text-white font-medium">Google</span>
+              <span className="text-white font-medium">Confrences</span>
               <div className="flex space-x-1">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-blue-400 text-blue-400" />
@@ -228,8 +213,7 @@ export default function HomePage() {
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">HOW TO JOIN LMUN</h2>
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
-              Follow these simple steps to secure your place in the world's most prestigious Model United Nations
-              conference
+              Follow these simple steps to secure your place in Lincoln Model United Nations
             </p>
           </motion.div>
 
@@ -291,32 +275,32 @@ export default function HomePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                name: "Alexandra Chen",
-                position: "Secretary-General",
-                email: "secretary.general@globalmun.org",
-                image: "/placeholder.svg?height=300&width=300",
-                bio: "Harvard graduate with 8+ years of MUN experience",
+                name: "Joel Chen",
+                position: "Secretary General",
+                email: "Jchen@lincoln.ed.cr ",
+                image: "/Joel.jpg?height=500&width=500",
+                bio: "12th grade student",
               },
               {
-                name: "Marcus Rodriguez",
-                position: "Deputy Secretary-General",
-                email: "deputy.sg@globalmun.org",
-                image: "/placeholder.svg?height=300&width=300",
-                bio: "Stanford alumnus and former UN intern",
+                name: "Juan Manuel Bermudez",
+                position: "Under Secretary General",
+                email: "Jbermudez@lincoln.ed.cr",
+                image: "/Juanma.jpg?height=300&width=300",
+                bio: "12th grade student",
               },
               {
-                name: "Priya Patel",
-                position: "Director-General",
-                email: "director.general@globalmun.org",
-                image: "/placeholder.svg?height=300&width=300",
-                bio: "Oxford graduate specializing in international law",
+                name: "Ilenia Bianchi",
+                position: "Under Secretary General",
+                email: "ibianchi@lincoln.ed.cr ",
+                image: "/Illenia.jpg?height=300&width=300",
+                bio: "12th grade student",
               },
               {
-                name: "James Wilson",
-                position: "Under Secretary-General",
-                email: "under.sg@globalmun.org",
-                image: "/placeholder.svg?height=300&width=300",
-                bio: "Yale Law graduate with diplomatic experience",
+                name: "Pia Campos",
+                position: "Under Secretary General",
+                email: "macampos@lincoln.ed.cr ",
+                image: "/Pia.jpg?height=300&width=300",
+                bio: "11th grade student",
               },
             ].map((member, index) => (
               <motion.div
@@ -331,7 +315,7 @@ export default function HomePage() {
                       <img
                         src={member.image || "/placeholder.svg"}
                         alt={member.name}
-                        className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-blue-400/30"
+                        className="w-50 h-50 rounded-full mx-auto object-cover border-4 border-blue-400/30"
                       />
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-2">{member.name}</h3>
@@ -351,130 +335,41 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Upcoming Conferences */}
-      <section className="py-20 bg-gradient-to-r from-blue-900/50 to-purple-900/50">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">UPCOMING CONFERENCES</h2>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
-              Join delegates from around the world at our prestigious conference locations
-            </p>
-          </motion.div>
+      {/* Secretary Card */}
+<section className="py-20 bg-gradient-to-r from-blue-900/50 to-purple-900/50">
+  <div className="container mx-auto px-6">
+    <div className="flex flex-col items-center text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-3xl"
+      >
+        <Badge className="mb-4 bg-blue-600/20 text-blue-300 border-blue-400/30">
+          A Greeting From Our Secretariat
+        </Badge>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {upcomingConferences.map((conference, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-              >
-                <Card
-                  className={`bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15 transition-all duration-300 overflow-hidden ${conference.featured ? "ring-2 ring-blue-400" : ""}`}
-                >
-                  <div className="relative">
-                    <img
-                      src={conference.image || "/placeholder.svg"}
-                      alt={conference.title}
-                      className="w-full h-48 object-cover"
-                    />
-                    {conference.featured && (
-                      <Badge className="absolute top-4 left-4 bg-blue-600 text-white">Featured</Badge>
-                    )}
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-white mb-2">{conference.title}</h3>
-                    <div className="space-y-2 text-gray-300 mb-4">
-                      <div className="flex items-center space-x-2">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                          />
-                        </svg>
-                        <span>{conference.date}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Globe className="w-4 h-4" />
-                        <span>{conference.location}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
-                          />
-                        </svg>
-                        <span>{conference.delegates} delegates</span>
-                      </div>
-                    </div>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">Learn More</Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          Dear Faculty, Delegates, and Esteemed Guests
+        </h2>
 
-      {/* Testimonials */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">WHAT DELEGATES SAY</h2>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
-              Hear from our alumni who have gone on to shape the world through diplomacy and leadership
-            </p>
-          </motion.div>
+        <p className="text-xl text-gray-300 mb-6 leading-relaxed">
+        Welcome to the 30th edition of Lincoln Model United Nations (LMUN). Our names are Joel Chen, Juan Manuel Bermúdez, Ilenia Bianchi and María Pía Campos, and we are honored to serve as this year's Secretary and Under-Secretary-Generals for the conference. Having hosted the first MUN conference in Costa Rica, LMUN has always been a pioneer in inspiring global change within our local community. For us, MUN has been an incredible opportunity to engage in meaningful dialogue with strangers, learning how collaboration and understanding can lead to cohesive solutions for real-world issues affecting millions globally.
+        </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-              >
-                <Card className="bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15 transition-all duration-300 h-full">
-                  <CardContent className="p-6">
-                    <div className="flex items-center space-x-1 mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                    <p className="text-gray-300 mb-6 leading-relaxed">"{testimonial.text}"</p>
-                    <div className="flex items-center space-x-3">
-                      <img
-                        src={testimonial.image || "/placeholder.svg"}
-                        alt={testimonial.name}
-                        className="w-12 h-12 rounded-full"
-                      />
-                      <div>
-                        <div className="font-semibold text-white">{testimonial.name}</div>
-                        <div className="text-sm text-gray-400">{testimonial.school}</div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+        This year, we’re celebrating 30 years of advocating for change in the world we live in. Our objective with this conference revolves around creating an atmosphere of seamless interaction, collaboration, and consensus for all involved. We are incredibly excited to see what LMUN 2026 has in store; we promise it will be an unforgettable experience. We mean it.
+        </p>
+        <p className="text-lg font-bold text-white mb-6">
+        With gratitude and anticipation,
+        The LMUN 2026 Secretariat
+        </p>
+      </motion.div>
+    </div>
+  </div>
+</section>
+
+      
 
       {/* CTA Section with Video Background */}
       <section className="py-20 relative overflow-hidden">

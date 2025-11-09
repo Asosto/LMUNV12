@@ -16,27 +16,27 @@ export function MainNav() {
               <Link href="/" className="text-blue-400 font-medium">
                 Home
               </Link>
-              <Link href="/about" className="text-white hover:text-blue-400 transition-colors">
+               <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
                 About
               </Link>
-              <Link href="/committees" className="text-white hover:text-blue-400 transition-colors">
+              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
                 Committees
               </Link>
-              <Link href="/schedule" className="text-white hover:text-blue-400 transition-colors">
+              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
                 Schedule
               </Link>
-              <Link href="/gallery" className="text-white hover:text-blue-400 transition-colors">
+              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
                 Gallery
               </Link>
-              <Link href="/conference-info" className="text-white hover:text-blue-400 transition-colors">
+              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
                 Conference Info
               </Link>
-              <Link href="/resources" className="text-white hover:text-blue-400 transition-colors">
+              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
                 Resources
               </Link>
-              <Link href="/upload" className="text-white hover:text-blue-400 transition-colors">
+              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
                 Upload Payment
-              </Link>
+              </Link> 
               <Button className="bg-blue-600 hover:bg-blue-700 text-white">Register Now</Button>
             </div>
             <MobileNav />
