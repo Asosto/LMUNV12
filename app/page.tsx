@@ -154,15 +154,15 @@ export default function HomePage() {
 
         <div className="container mx-auto px-6 text-center relative z-20">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-400/30">
+            <Badge className="mb-4 bg-blue-600/20 text-blue-300 border-blue-400/30">
               <Play className="w-4 h-4 mr-2" />
-              30th anniversary
+              <div className="text-2xl">30th anniversary</div>
             </Badge>
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            LINCOLN
+              LINCOLN
               <span className="block bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent">
-              MODEL UNITED
+                MODEL UNITED
               </span>
               <span className="block text-white">NATIONS</span>
             </h1>
@@ -187,17 +187,9 @@ export default function HomePage() {
               </Button>
             </div>
 
-            
+
             {/* Google Rating */}
-            <div className="flex items-center justify-center mt-8 space-x-2">
-              <span className="text-white font-medium">Confrences</span>
-              <div className="flex space-x-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-blue-400 text-blue-400" />
-                ))}
-              </div>
-              <span className="text-white font-bold">5.0</span>
-            </div>
+
           </motion.div>
         </div>
       </section>
@@ -336,40 +328,40 @@ export default function HomePage() {
       </section>
 
       {/* Secretary Card */}
-<section className="py-20 bg-gradient-to-r from-blue-900/50 to-purple-900/50">
-  <div className="container mx-auto px-6">
-    <div className="flex flex-col items-center text-center">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-3xl"
-      >
-        <Badge className="mb-4 bg-blue-600/20 text-blue-300 border-blue-400/30">
-          A Greeting From Our Secretariat
-        </Badge>
+      <section className="py-20 bg-gradient-to-r from-blue-900/50 to-purple-900/50">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col items-center text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="max-w-3xl"
+            >
+              <Badge className="mb-4 bg-blue-600/20 text-blue-300 border-blue-400/30">
+                A Greeting From Our Secretariat
+              </Badge>
 
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-          Dear Faculty, Delegates, and Esteemed Guests
-        </h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Dear Faculty, Delegates, and Esteemed Guests
+              </h2>
 
-        <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-        Welcome to the 30th edition of Lincoln Model United Nations (LMUN). Our names are Joel Chen, Juan Manuel Bermúdez, Ilenia Bianchi and María Pía Campos, and we are honored to serve as this year's Secretary and Under-Secretary-Generals for the conference. Having hosted the first MUN conference in Costa Rica, LMUN has always been a pioneer in inspiring global change within our local community. For us, MUN has been an incredible opportunity to engage in meaningful dialogue with strangers, learning how collaboration and understanding can lead to cohesive solutions for real-world issues affecting millions globally.
-        </p>
+              <p className="text-xl text-gray-300 mb-6 leading-relaxed">
+                Welcome to the 30th edition of Lincoln Model United Nations (LMUN). Our names are Joel Chen, Juan Manuel Bermúdez, Ilenia Bianchi and María Pía Campos, and we are honored to serve as this year's Secretary and Under-Secretary-Generals for the conference. Having hosted the first MUN conference in Costa Rica, LMUN has always been a pioneer in inspiring global change within our local community. For us, MUN has been an incredible opportunity to engage in meaningful dialogue with strangers, learning how collaboration and understanding can lead to cohesive solutions for real-world issues affecting millions globally.
+              </p>
 
-        <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-        This year, we’re celebrating 30 years of advocating for change in the world we live in. Our objective with this conference revolves around creating an atmosphere of seamless interaction, collaboration, and consensus for all involved. We are incredibly excited to see what LMUN 2026 has in store; we promise it will be an unforgettable experience. We mean it.
-        </p>
-        <p className="text-lg font-bold text-white mb-6">
-        With gratitude and anticipation,
-        The LMUN 2026 Secretariat
-        </p>
-      </motion.div>
-    </div>
-  </div>
-</section>
+              <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+                This year, we’re celebrating 30 years of advocating for change in the world we live in. Our objective with this conference revolves around creating an atmosphere of seamless interaction, collaboration, and consensus for all involved. We are incredibly excited to see what LMUN 2026 has in store; we promise it will be an unforgettable experience. We mean it.
+              </p>
+              <p className="text-lg font-bold text-white mb-6">
+                With gratitude and anticipation,
+                The LMUN 2026 Secretariat
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
-      
+
 
       {/* CTA Section with Video Background */}
       <section className="py-20 relative overflow-hidden">
@@ -428,7 +420,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-              <Image src="/logo.png" alt="LMUN Logo" width={70} height={30} />
+                <Image src="/logo.png" alt="LMUN Logo" width={70} height={30} />
                 <span className="text-4xl font-bold text-white">LMUN</span>
               </div>
               <p className="text-gray-400">
