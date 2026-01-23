@@ -253,20 +253,14 @@ export default function SchedulePage() {
               <Link href="/" className="text-white hover:text-blue-400 transition-colors">
                 Home
               </Link>
-              <Link href="/about" className="text-white hover:text-blue-400 transition-colors">
-                About
-              </Link>
               <Link href="/committees" className="text-white hover:text-blue-400 transition-colors">
                 Committees
-              </Link>
-              <Link href="/schedule" className="text-blue-400 font-medium">
-                Schedule
               </Link>
               <Link href="/gallery" className="text-white hover:text-blue-400 transition-colors">
                 Gallery
               </Link>
               <Link href="/conference-info" className="text-white hover:text-blue-400 transition-colors">
-                Conference Info
+                Conference Information
               </Link>
               <Link href="/resources" className="text-white hover:text-blue-400 transition-colors">
                 Resources

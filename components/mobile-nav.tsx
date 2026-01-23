@@ -12,11 +12,9 @@ export function MobileNav() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
     { name: "Committees", href: "/committees" },
-    { name: "Schedule", href: "/schedule" },
     { name: "Gallery", href: "/gallery" },
-    { name: "Conference Info", href: "/conference-info" },
+    { name: "Conference Information", href: "/conference-info" },
     { name: "Resources", href: "/resources" },
     { name: "Upload Payment", href: "/upload" },
     { name: "Admin", href: "/admin/login" },

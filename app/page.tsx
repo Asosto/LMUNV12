@@ -10,6 +10,7 @@ import { Globe, Award, Star, ArrowRight, Play, CheckCircle, BookOpen, Target } f
 import Link from "next/link"
 import { MobileNav } from "@/components/mobile-nav"
 import { MainNav } from "@/components/MainNav"
+import { Footer } from "@/components/Footer"
 import Image from "next/image"
 
 export default function HomePage() {
@@ -20,18 +21,11 @@ export default function HomePage() {
 
   // Video refs for controlling playback
   const heroVideoRef = useRef<HTMLVideoElement>(null)
-  const ctaVideoRef = useRef<HTMLVideoElement>(null)
 
   // Play videos when component mounts
   useEffect(() => {
     if (heroVideoRef.current) {
       heroVideoRef.current.play().catch((error) => {
-        console.log("Auto-play was prevented:", error)
-      })
-    }
-
-    if (ctaVideoRef.current) {
-      ctaVideoRef.current.play().catch((error) => {
         console.log("Auto-play was prevented:", error)
       })
     }
@@ -162,15 +156,13 @@ export default function HomePage() {
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
               LINCOLN
               <span className="block bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent">
-                MODEL UNITED
+              Model United Nations
               </span>
-              <span className="block text-white">NATIONS</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Join Costa Rica's leading Model United Nations conference in celebrating its 30th anniversary this march 7th and 8th, where you will
-              develop critical thinking, public
-              speaking, and diplomatic skills while addressing real-world challenges alongside future global leaders.
+            It is our great honor and pleasure to invite you to the upcoming Lincoln School Model United Nations 2026. 
+            We would be delighted to welcome you to our 30th annual conference, held under the theme “Honoring the Past, Debating the Present, and Building the Future.” 
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -178,13 +170,7 @@ export default function HomePage() {
                 Register Now
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-white/10 hover:text-gray-400 border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg"
-              >
-                Learn More
-              </Button>
+         
             </div>
 
 
@@ -203,10 +189,12 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">HOW TO JOIN LMUN</h2>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
-              Follow these simple steps to secure your place in Lincoln Model United Nations
-            </p>
+            <h2
+              className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6 text-white drop-shadow-lg tracking-wide uppercase whitespace-nowrap"
+            >
+              Celebrating 30 Years of <span className="italic text-blue-400">LMUN<span className="italic text-white">!</span></span>
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">Follow these simple steps to secure your place in this year's conference!</p>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -238,7 +226,7 @@ export default function HomePage() {
             className="text-center mt-12"
           >
             <p className="text-lg text-gray-300 mb-8">
-              Ready to begin your diplomatic journey? Start your registration today!
+              Keep in mind that we'll be operating in an rolling admissions basis. Start your registration today!
             </p>
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4">
               Start Registration
@@ -329,171 +317,48 @@ export default function HomePage() {
 
       {/* Secretary Card */}
       <section className="py-20 bg-gradient-to-r from-blue-900/50 to-purple-900/50">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col items-center text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="max-w-3xl"
-            >
-              <Badge className="mb-4 bg-blue-600/20 text-blue-300 border-blue-400/30">
-                A Greeting From Our Secretariat
-              </Badge>
-
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Dear Faculty, Delegates, and Esteemed Guests
-              </h2>
-
-              <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-                Welcome to the 30th edition of Lincoln Model United Nations (LMUN). Our names are Joel Chen, Juan Manuel Bermúdez, Ilenia Bianchi and María Pía Campos, and we are honored to serve as this year's Secretary and Under-Secretary-Generals for the conference. Having hosted the first MUN conference in Costa Rica, LMUN has always been a pioneer in inspiring global change within our local community. For us, MUN has been an incredible opportunity to engage in meaningful dialogue with strangers, learning how collaboration and understanding can lead to cohesive solutions for real-world issues affecting millions globally.
-              </p>
-
-              <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                This year, we’re celebrating 30 years of advocating for change in the world we live in. Our objective with this conference revolves around creating an atmosphere of seamless interaction, collaboration, and consensus for all involved. We are incredibly excited to see what LMUN 2026 has in store; we promise it will be an unforgettable experience. We mean it.
-              </p>
-              <p className="text-lg font-bold text-white mb-6">
-                With gratitude and anticipation,
-                The LMUN 2026 Secretariat
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-
-
-      {/* CTA Section with Video Background */}
-      <section className="py-20 relative overflow-hidden">
-        {/* Video Background */}
-        <div className="absolute inset-0 z-0">
-          <video
-            ref={ctaVideoRef}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute min-w-full min-h-full object-cover"
-          >
-            <source src="/placeholder.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-800/90 to-blue/90"></div>
-        </div>
-
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <svg className="w-16 h-16 text-white mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+        <div className="container mx-auto px-0">
+          <div className="flex flex-col md:flex-row items-center md:items-stretch md:text-left text-center">
+            {/* Left: Even larger image, closer to left border, not so wide */}
+            <div className="w-full md:w-[46%] flex justify-start items-center mb-10 md:mb-0 md:mr-10 md:pl-0 pl-0">
+              <img
+                src="/Committee1.jpeg"
+                alt="LMUN Secretariat"
+                className="w-full max-w-[560px] h-auto md:h-[520px] object-cover rounded-3xl border-4 border-blue-400/30 bg-white/10 shadow-2xl ml-0"
               />
-            </svg>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">Ready to Shape the Future?</h2>
-            <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Join thousands of delegates who have transformed their leadership skills and built lifelong connections
-              through LMUN conferences.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg">
-                Register Now
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg"
-              >
-                Download Brochure
-              </Button>
             </div>
-          </motion.div>
+            {/* Secretary Greeting */}
+            <div className="w-full md:w-1/2 flex flex-col justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="max-w-3xl mx-auto md:mx-0"
+              >
+                <Badge className="mb-5 bg-blue-600/20 text-blue-300 border-blue-400/30 text-xl px-6 py-3">
+                  A Greeting From The Secretariat 👋
+                </Badge>
+                <h2 className="text-lg md:text-3xl font-bold text-white mb-6">
+                  Dear Faculty, Delegates, and Esteemed Guests
+                </h2>
+                <p className="text-lg text-gray-300 mb-6 leading-relaxed text-left">
+                  Welcome to the 30th edition of Lincoln Model United Nations (LMUN). Our names are Joel Chen, Juan Manuel Bermúdez, Ilenia Bianchi and Maria Pia Campos, and we are honored to serve as this year's Secretary and Under-Secretary-Generals for the conference. Having hosted the first MUN conference in Costa Rica, LMUN has always been a pioneer in inspiring global change within our local community. For us, MUN has been an incredible opportunity to engage in meaningful dialogue with strangers, learning how collaboration and understanding can lead to cohesive solutions for real-world issues affecting millions globally.
+                </p>
+                <p className="text-lg text-gray-300 mb-8 leading-relaxed text-left">
+                  This year, we’re celebrating 30 years of advocating for change in the world we live in. Our objective with this conference revolves around creating an atmosphere of seamless interaction, collaboration, and consensus for all involved. We are incredibly excited to see what LMUN 2026 has in store; we promise it will be an unforgettable experience. We mean it.
+                </p>
+                <p className="text-xl text-white mb-6 font-bold">
+                  With gratitude and anticipation,
+                  The LMUN 2026 Secretariat
+                </p>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 py-12">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Image src="/logo.png" alt="LMUN Logo" width={70} height={30} />
-                <span className="text-4xl font-bold text-white">LMUN</span>
-              </div>
-              <p className="text-gray-400">
-                Empowering the next generation of global leaders through diplomatic education and international
-                cooperation.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-white mb-4">Quick Links</h3>
-              <div className="space-y-2">
-                <Link href="/about" className="block text-gray-400 hover:text-white transition-colors">
-                  About
-                </Link>
-                <Link href="/committees" className="block text-gray-400 hover:text-white transition-colors">
-                  Committees
-                </Link>
-                <Link href="/schedule" className="block text-gray-400 hover:text-white transition-colors">
-                  Schedule
-                </Link>
-                <Link href="/gallery" className="block text-gray-400 hover:text-white transition-colors">
-                  Gallery
-                </Link>
-                <Link href="/conference-info" className="block text-gray-400 hover:text-white transition-colors">
-                  Conference Info
-                </Link>
-                <Link href="/resources" className="block text-gray-400 hover:text-white transition-colors">
-                  Resources
-                </Link>
-                <Link href="/upload" className="block text-gray-400 hover:text-white transition-colors">
-                  Upload Payment
-                </Link>
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold text-white mb-4">Support</h3>
-              <div className="space-y-2">
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  Help Center
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  Contact Us
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  FAQs
-                </a>
-                <Link href="/admin/dashboard" className="block text-gray-400 hover:text-white transition-colors">
-                  Admin
-                </Link>
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold text-white mb-4">Connect</h3>
-              <div className="space-y-2">
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  LinkedIn
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  Twitter
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  Instagram
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  Facebook
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-            <p className="text-gray-400">© 2026 LMUN. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

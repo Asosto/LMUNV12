@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Globe, MapPin, Download, Award, ArrowRight, Calendar, Info, Mic, Building } from "lucide-react"
+import { Globe, MapPin, Download, Award, ArrowRight, Calendar, Info, Mic, Building, Clock, Users, Coffee, Utensils, CheckCircle } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { MobileNav } from "@/components/mobile-nav"
@@ -44,33 +44,6 @@ export default function ConferenceInfoPage() {
     },
   ]
 
-  const resources = [
-    {
-      title: "Conference Venue Map",
-      description: "Detailed map of the United Nations Headquarters with committee room locations",
-      icon: <MapPin className="w-8 h-8" />,
-      buttonText: "Download Map",
-    },
-    {
-      title: "Committee Assignments",
-      description: "Complete list of committees, topics, and country assignments",
-      icon: <Building className="w-8 h-8" />,
-      buttonText: "Download List",
-    },
-    {
-      title: "Transportation Guide",
-      description: "Information on getting to and from the conference venue",
-      icon: <Globe className="w-8 h-8" />,
-      buttonText: "Download Guide",
-    },
-    {
-      title: "Accommodation Options",
-      description: "Partner hotels and special rates for conference delegates",
-      icon: <Building className="w-8 h-8" />,
-      buttonText: "View Options",
-    },
-  ]
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       {/* Navigation */}
@@ -85,20 +58,14 @@ export default function ConferenceInfoPage() {
               <Link href="/" className="text-white hover:text-blue-400 transition-colors">
                 Home
               </Link>
-              <Link href="/about" className="text-white hover:text-blue-400 transition-colors">
-                About
-              </Link>
               <Link href="/committees" className="text-white hover:text-blue-400 transition-colors">
                 Committees
-              </Link>
-              <Link href="/schedule" className="text-white hover:text-blue-400 transition-colors">
-                Schedule
               </Link>
               <Link href="/gallery" className="text-white hover:text-blue-400 transition-colors">
                 Gallery
               </Link>
               <Link href="/conference-info" className="text-blue-400 font-medium">
-                Conference Info
+                Conference Information
               </Link>
               <Link href="/resources" className="text-white hover:text-blue-400 transition-colors">
                 Resources
@@ -143,8 +110,8 @@ export default function ConferenceInfoPage() {
         </div>
       </section>
 
-      {/* Resources Section */}
-      <section className="py-20">
+      {/* Schedule Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-900/30 to-purple-900/30">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -152,33 +119,247 @@ export default function ConferenceInfoPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">CONFERENCE RESOURCES</h2>
+            <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-400/30">
+              <Calendar className="w-4 h-4 mr-2" />
+              Conference Schedule
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">CONFERENCE SCHEDULE</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Download maps, guides, and other essential materials to help you navigate the conference
+              Three days of intensive diplomatic simulation, networking, and learning. Plan your conference experience
+              with our detailed schedule of events.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                Download Full Schedule
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                Add to Calendar
+              </Button>
+            </div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {resources.map((resource, index) => (
+          <div className="space-y-16">
+            {[
+              {
+                day: "Friday, March 7, 2026",
+                date: "Day 1",
+                events: [
+                  {
+                    time: "8:00 AM - 9:00 AM",
+                    title: "Registration & Welcome Breakfast",
+                    location: "Main Lobby",
+                    type: "registration",
+                    description: "Check-in, receive conference materials, and network with fellow delegates",
+                  },
+                  {
+                    time: "9:00 AM - 10:00 AM",
+                    title: "Opening Ceremony",
+                    location: "General Assembly Hall",
+                    type: "ceremony",
+                    description: "Welcome address by Secretary-General and keynote speaker",
+                  },
+                  {
+                    time: "10:00 AM - 10:30 AM",
+                    title: "Coffee Break & Networking",
+                    location: "Conference Center Atrium",
+                    type: "break",
+                    description: "Connect with delegates and enjoy refreshments",
+                  },
+                  {
+                    time: "10:30 AM - 12:30 PM",
+                    title: "Committee Session I",
+                    location: "Various Committee Rooms",
+                    type: "session",
+                    description: "First formal committee session - opening statements and initial debate",
+                  },
+                  {
+                    time: "12:30 PM - 1:30 PM",
+                    title: "Lunch Break",
+                    location: "Conference Center Dining Hall",
+                    type: "meal",
+                    description: "Networking lunch with international cuisine",
+                  },
+                  {
+                    time: "1:30 PM - 3:30 PM",
+                    title: "Committee Session II",
+                    location: "Various Committee Rooms",
+                    type: "session",
+                    description: "Continued debate and initial resolution drafting",
+                  },
+                  {
+                    time: "3:30 PM - 4:00 PM",
+                    title: "Afternoon Break",
+                    location: "Conference Center Atrium",
+                    type: "break",
+                    description: "Refreshments and informal discussions",
+                  },
+                  {
+                    time: "4:00 PM - 6:00 PM",
+                    title: "Committee Session III",
+                    location: "Various Committee Rooms",
+                    type: "session",
+                    description: "Working groups and resolution development",
+                  },
+                ],
+              },
+              {
+                day: "Saturday, March 8, 2026",
+                date: "Day 2",
+                events: [
+                  {
+                    time: "8:00 AM - 9:00 AM",
+                    title: "Breakfast & Morning Briefing",
+                    location: "Conference Center Dining Hall",
+                    type: "meal",
+                    description: "Continental breakfast and daily briefing",
+                  },
+                  {
+                    time: "9:00 AM - 11:00 AM",
+                    title: "Committee Session IV",
+                    location: "Various Committee Rooms",
+                    type: "session",
+                    description: "Intensive debate and amendment discussions",
+                  },
+                  {
+                    time: "11:00 AM - 11:30 AM",
+                    title: "Coffee Break",
+                    location: "Conference Center Atrium",
+                    type: "break",
+                    description: "Mid-morning refreshments",
+                  },
+                  {
+                    time: "11:30 AM - 1:00 PM",
+                    title: "Crisis Committee Special Session",
+                    location: "Security Council Chamber",
+                    type: "special",
+                    description: "Emergency session addressing breaking international crisis",
+                  },
+                  {
+                    time: "1:00 PM - 2:00 PM",
+                    title: "Lunch Break",
+                    location: "Conference Center Dining Hall",
+                    type: "meal",
+                    description: "Working lunch with committee members",
+                  },
+                  {
+                    time: "2:00 PM - 4:00 PM",
+                    title: "Committee Session V",
+                    location: "Various Committee Rooms",
+                    type: "session",
+                    description: "Final resolution drafting and voting procedures",
+                  },
+                  {
+                    time: "4:00 PM - 4:30 PM",
+                    title: "Afternoon Break",
+                    location: "Conference Center Atrium",
+                    type: "break",
+                    description: "Last networking opportunity before final sessions",
+                  },
+                  {
+                    time: "4:30 PM - 6:30 PM",
+                    title: "Committee Session VI",
+                    location: "Various Committee Rooms",
+                    type: "session",
+                    description: "Final voting and resolution adoption",
+                  },
+                  {
+                    time: "7:30 PM - 10:00 PM",
+                    title: "Gala Dinner & Awards Ceremony",
+                    location: "Grand Ballroom",
+                    type: "ceremony",
+                    description: "Formal gala with awards presentation and entertainment",
+                  },
+                ],
+              },
+            ].map((day, dayIndex) => (
               <motion.div
-                key={index}
+                key={dayIndex}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                transition={{ duration: 0.8, delay: dayIndex * 0.2 }}
               >
-                <Card className="bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15 transition-all duration-300 h-full">
-                  <CardContent className="p-6 flex flex-col h-full">
-                    <div className="bg-blue-600/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-4">
-                      <div className="text-blue-400">{resource.icon}</div>
-                    </div>
-                    <h3 className="text-xl font-semibold text-white mb-2">{resource.title}</h3>
-                    <p className="text-gray-300 mb-6 flex-grow">{resource.description}</p>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                      <Download className="w-4 h-4 mr-2" />
-                      {resource.buttonText}
-                    </Button>
-                  </CardContent>
-                </Card>
+                <div className="text-center mb-12">
+                  <Badge className="mb-4 bg-blue-600/20 text-blue-300 border-blue-400/30 text-lg px-4 py-2">
+                    {day.date}
+                  </Badge>
+                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">{day.day}</h3>
+                </div>
+
+                <div className="space-y-6">
+                  {day.events.map((event, eventIndex) => {
+                    const getEventIcon = (type: string) => {
+                      switch (type) {
+                        case "registration":
+                          return <CheckCircle className="w-5 h-5" />
+                        case "ceremony":
+                          return <Award className="w-5 h-5" />
+                        case "session":
+                          return <Users className="w-5 h-5" />
+                        case "break":
+                          return <Coffee className="w-5 h-5" />
+                        case "meal":
+                          return <Utensils className="w-5 h-5" />
+                        case "special":
+                          return <Award className="w-5 h-5" />
+                        default:
+                          return <Clock className="w-5 h-5" />
+                      }
+                    }
+
+                    const getEventColor = (type: string) => {
+                      switch (type) {
+                        case "registration":
+                          return "bg-green-600/20 text-green-300 border-green-400/30"
+                        case "ceremony":
+                          return "bg-purple-600/20 text-purple-300 border-purple-400/30"
+                        case "session":
+                          return "bg-blue-600/20 text-blue-300 border-blue-400/30"
+                        case "break":
+                          return "bg-orange-600/20 text-orange-300 border-orange-400/30"
+                        case "meal":
+                          return "bg-yellow-600/20 text-yellow-300 border-yellow-400/30"
+                        case "special":
+                          return "bg-red-600/20 text-red-300 border-red-400/30"
+                        default:
+                          return "bg-gray-600/20 text-gray-300 border-gray-400/30"
+                      }
+                    }
+
+                    return (
+                      <motion.div
+                        key={eventIndex}
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: eventIndex * 0.1 }}
+                      >
+                        <Card className="bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15 transition-all duration-300">
+                          <CardContent className="p-6">
+                            <div className="flex flex-col md:flex-row md:items-center gap-4">
+                              <div className="flex items-center space-x-4 md:w-1/4">
+                                <div className={`p-2 rounded-lg ${getEventColor(event.type)}`}>
+                                  {getEventIcon(event.type)}
+                                </div>
+                                <div className="font-mono text-blue-400 font-semibold">{event.time}</div>
+                              </div>
+
+                              <div className="flex-1">
+                                <h4 className="text-xl font-semibold text-white mb-2">{event.title}</h4>
+                                <p className="text-gray-300 mb-2">{event.description}</p>
+                                <div className="flex items-center space-x-2 text-gray-400">
+                                  <MapPin className="w-4 h-4" />
+                                  <span>{event.location}</span>
+                                </div>
+                              </div>
+
+                              <Badge className={`${getEventColor(event.type)} capitalize`}>{event.type}</Badge>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    )
+                  })}
+                </div>
               </motion.div>
             ))}
           </div>
@@ -237,21 +418,12 @@ export default function ConferenceInfoPage() {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <p className="text-gray-300 mb-6">
-              All fees are in USD. Payment can be made via bank transfer, credit card, or PayPal.
-              <br />
-              Scholarships are available for qualified applicants.
-            </p>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-              Apply for Financial Aid
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </div>
+       
         </div>
       </section>
 
       {/* Guest Speaker */}
+      {/* Temporarily hidden - Ambassador James Wilson section
       <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -299,6 +471,7 @@ export default function ConferenceInfoPage() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Memorial Award */}
       <section className="py-20 bg-gradient-to-r from-blue-900/50 to-purple-900/50">
@@ -315,19 +488,21 @@ export default function ConferenceInfoPage() {
                 Jeanie Ayub International Relations Award
               </h2>
               <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-                Established in memory of Professor Jeanie Ayub, a pioneering scholar in international relations and
-                dedicated mentor to generations of diplomats. This prestigious award recognizes outstanding achievement
-                in diplomatic excellence and innovative problem-solving.
+              For over 30 years, Mrs. Jeanie Ayub (1948-2018) was one of the most influential, inspiring and dedicated teachers at Lincoln School. Over the course of her time at Lincoln, she was High
+              School Assistant Principal, Social Studies Department Coordinator, served as advisor to several
+              student groups, and helped forge the school’s IB History program. 
+
               </p>
               <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                Recipients demonstrate exceptional leadership, diplomatic skill, and commitment to international
-                cooperation. The award includes a $5,000 scholarship for further studies in international relations or
-                related fields.
+              Perhaps her most lasting legacy was her introduction of a Model United Nations program at Lincoln School and in Costa Rica. 
+              After taking several Lincoln delegations to participate in Harvard Model United Nations,she inspired and advised a group of students to launch Lincoln Model United Nations (LMUN).
               </p>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                Learn About the Award
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <a href="https://docs.google.com/document/d/1xnkRuhVJcDWap_NcG_3zRUbwKPHCkp7p/edit" target="_blank" rel="noopener noreferrer">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                  Learn About the Award
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </a>
             </motion.div>
 
             <motion.div
@@ -338,8 +513,8 @@ export default function ConferenceInfoPage() {
             >
               <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
-                  alt="Jeanie Ayub Award"
+                  src="/jeanie-ayub-photo.avif"
+                  alt="Jeanie Ayub"
                   width={600}
                   height={400}
                   className="w-full h-auto object-cover rounded-2xl"
@@ -350,33 +525,6 @@ export default function ConferenceInfoPage() {
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-700/90 to-blue/90">
-        <div className="container mx-auto px-6 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <Calendar className="w-16 h-16 text-white mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Join LMUN 2026?</h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Register now to secure your spot and take advantage of early bird pricing. Join delegates from around the
-              world for an unforgettable diplomatic experience.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg">
-                Register Now
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg"
-              >
-                Contact Us
-              </Button>
-            </div>
-          </motion.div>
         </div>
       </section>
 

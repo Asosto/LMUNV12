@@ -16,25 +16,19 @@ export function MainNav() {
               <Link href="/" className="text-blue-400 font-medium">
                 Home
               </Link>
-               <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
-                About
-              </Link>
-              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
+              <Link href="/committees" className="text-white hover:text-blue-400 transition-colors">
                 Committees
               </Link>
-              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
-                Schedule
-              </Link>
-              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
+              <Link href="/gallery" className="text-white hover:text-blue-400 transition-colors">
                 Gallery
               </Link>
-              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
-                Conference Info
+              <Link href="/conference-info" className="text-white hover:text-blue-400 transition-colors">
+                Conference Information
               </Link>
-              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
+              <Link href="/resources" className="text-white hover:text-blue-400 transition-colors">
                 Resources
               </Link>
-              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
+              <Link href="/upload" className="text-white hover:text-blue-400 transition-colors">
                 Upload Payment
               </Link> 
               <Button className="bg-blue-600 hover:bg-blue-700 text-white">Register Now</Button>

@@ -19,17 +19,17 @@ export function Footer() {
             <div>
               <h3 className="font-semibold text-white mb-4">Quick Links</h3>
               <div className="space-y-2">
-                <Link href="/about" className="block text-gray-400 hover:text-white transition-colors">
-                  About
-                </Link>
                 <Link href="/committees" className="block text-gray-400 hover:text-white transition-colors">
                   Committees
                 </Link>
-                <Link href="/schedule" className="block text-gray-400 hover:text-white transition-colors">
-                  Schedule
-                </Link>
                 <Link href="/gallery" className="block text-gray-400 hover:text-white transition-colors">
                   Gallery
+                </Link>
+                <Link href="/conference-info" className="block text-gray-400 hover:text-white transition-colors">
+                  Conference Information
+                </Link>
+                <Link href="/resources" className="block text-gray-400 hover:text-white transition-colors">
+                  Resources
                 </Link>
                 <Link href="/upload" className="block text-gray-400 hover:text-white transition-colors">
                   Upload Payment
@@ -56,17 +56,13 @@ export function Footer() {
             <div>
               <h3 className="font-semibold text-white mb-4">Connect</h3>
               <div className="space-y-2">
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  LinkedIn
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  Twitter
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
+                <a 
+                  href="https://www.instagram.com/2026lmun/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block text-gray-400 hover:text-white transition-colors"
+                >
                   Instagram
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  Facebook
                 </a>
               </div>
             </div>
