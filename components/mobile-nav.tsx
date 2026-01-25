@@ -68,7 +68,9 @@ export function MobileNav() {
           </nav>
           <div className="p-6 border-t border-slate-800">
             <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={() => setOpen(false)} asChild>
-              <Link href="#">Register Now</Link>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSedNwUoCCEAvbmzqY21JoNnDv9I5rdT0GOlxxfcjAFi-wv6DA/viewform?usp=header" target="_blank" rel="noopener noreferrer">
+                Register Now
+              </a>
             </Button>
           </div>
         </div>

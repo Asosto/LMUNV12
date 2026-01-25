@@ -149,7 +149,7 @@ export default function HomePage() {
         <div className="container mx-auto px-6 text-center relative z-20">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <Badge className="mb-4 bg-blue-600/20 text-blue-300 border-blue-400/30">
-              <Play className="w-4 h-4 mr-2" />
+              <Play className="w-5 h-5 mr-2" />
               <div className="text-2xl">30th anniversary</div>
             </Badge>
 
@@ -166,9 +166,11 @@ export default function HomePage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
-                Register Now
-                <ArrowRight className="w-5 h-5 ml-2" />
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg" asChild>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSedNwUoCCEAvbmzqY21JoNnDv9I5rdT0GOlxxfcjAFi-wv6DA/viewform?usp=header" target="_blank" rel="noopener noreferrer">
+                  Register Now
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </a>
               </Button>
          
             </div>
@@ -228,9 +230,11 @@ export default function HomePage() {
             <p className="text-lg text-gray-300 mb-8">
               Keep in mind that we'll be operating in an rolling admissions basis. Start your registration today!
             </p>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4">
-              Start Registration
-              <ArrowRight className="w-5 h-5 ml-2" />
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4" asChild>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSedNwUoCCEAvbmzqY21JoNnDv9I5rdT0GOlxxfcjAFi-wv6DA/viewform?usp=header" target="_blank" rel="noopener noreferrer">
+                Start Registration
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </a>
             </Button>
           </motion.div>
         </div>

@@ -12,19 +12,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import {
-  Globe,
-  Shield,
-  Gavel,
   Building,
-  Heart,
   Download,
-  BookOpen,
-  UtensilsCrossed,
-  Bomb,
-  Atom,
-  Clock,
-  Pill,
-  Network,
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -33,62 +22,63 @@ import { Footer } from "@/components/Footer"
 
 export default function CommitteesPage() {
   const [selectedCommittee, setSelectedCommittee] = useState<number | null>(null)
-  const committees = [
+  // HS Committees (randomized order)
+  const hsCommittees = [
     {
-      name: "Ad Hoc United Nations Security Council",
-      acronym: "Ad Hoc United Nations Security Council",
-      topic: "Humanitarian crisis in South Sudan",
+      name: "Organization of Islamic Cooperation",
+      acronym: "OIC",
+      topic: "Iran's nuclear weapons",
+      difficulty: "Intermediate",
+      logo: "/committee_logos/OIC Logo.png",
+      description:
+        "In recent months, tensions have risen in the Middle East after Israel launched a full-scale attack on Iran's nuclear and military facilities in June 2025 because of a first-order concern that Iran's nuclear weapons might be an existential threat to Israel. Iran has not confirmed whether it possesses nuclear weapons; this uncertainty has caused concern about the spread of nuclear weapons and the rising conflict in the region. Experts warn that mistakes or poor communication may lead to a greater scale conflict that could involve nuclear weapons. For the Organization of Islamic Cooperation (OIC), this raises important questions about regional security, preventing the spread of nuclear weapons, and encouraging peace through diplomacy and cooperation.",
+      chair: {
+        name: "Luna Jervis",
+        image: "/committee_portraits/Luna Jervis.jpeg",
+      },
+      coChair: {
+        name: "Luciana Benavidez",
+        image: "/committee_portraits/Luciana Benavides.jpeg",
+      },
+      language: "English",
+      level: "HS",
+      featured: false,
+    },
+    {
+      name: "Food and Agriculture Organization",
+      acronym: "FAO",
+      topic: "Food Security: establishing consumerism rights in the 21st century",
+      difficulty: "Beginner",
+      logo: "/committee_logos/FAO Logo.jpg",
+      description:
+        "In the contemporary global system, food security has also come to refer to safety, transparency, and consumer confidence in food, apart from the commonly recognized issue of food availability. With the extension of the global food system, the growing disparity in the food handling standards of different nations regarding food labeling, certification, limits of pesticide residues on food, etc., has now emerged as an issue related to food safety, creating public health hazards as well as hindering international food trade. Another factor related to food security is the practice of the use of vague and misleading descriptions of food, which has now come to compromise the public's food selection capabilities as well. Some have argued to execute stricter measures in food security through the implementation of the harmonized food security standards of various countries, while others have argued to implement these measures gradually to ensure food security of the food vendors as well.",
+      chair: {
+        name: "Noah Lang",
+        image: "/placeholder.svg?height=80&width=80",
+      },
+      coChair: {
+        name: "Galia Luconi",
+        image: "/committee_portraits/Galia Luconi.jpeg",
+      },
+      language: "English",
+      level: "HS",
+      featured: false,
+    },
+    {
+      name: "Historical United Nations Security Council",
+      acronym: "Historical UNSC",
+      topic: "Checkpoint Crisis: The Berlin Wall Committee",
       difficulty: "Advanced",
-      icon: <Shield className="w-8 h-8" />,
+      logo: "/committee_logos/UN-Logo.png",
       description:
-        "An ad hoc session of the Security Council addressing urgent humanitarian crises. Delegates must navigate complex political dynamics while prioritizing human welfare and international stability.",
+        "On August 13th, 1961, East Germany, along with the Soviets, began building the Berlin Wall, which separated West Berlin. This caused a turning point in the Cold War as it clearly indicated a division between the capitalist United States and the communist Soviet Union. The United States and the Soviet Union had had many disagreements in the past, but the Iron Curtain caused political, social, and economic problems all over the world. Public awareness and opinion were directly affected by the construction of the Berlin Wall, both in Germany and internationally. This event occurred after World War II ended and the country was split into the Federal Republic of Germany (West) and the German Democratic Republic (East). Organizations were created, such as NATO (North Atlantic Treaty Organization), that allied with the United States, while the Warsaw Pact was created to ally with the Soviet Union, causing political turmoil and separation. Going back in time, this problem could have been approached differently to lessen the effects of the war and the Iron Curtain.",
       chair: {
-        name: "Tomas Villalobos",
-        image: "/placeholder.svg?height=80&width=80",
+        name: "Elena Sáenz",
+        image: "/committee_portraits/Elena Saenz.jpeg",
       },
       coChair: {
-        name: "Tomas Van der Laat",
-        image: "/placeholder.svg?height=80&width=80",
-      },
-      language: "English",
-      level: "HS",
-      featured: false,
-    },
-    {
-      name: "European Club Association",
-      acronym: "ECA",
-      topic: "The Future of European Club Football: The Debate of the Super League proposition and the Fight for the Soul of the Game",
-      difficulty: "Intermediate",
-      icon: <Globe className="w-8 h-8" />,
-      description:
-        "A specialized committee examining the future of European football, addressing the controversial Super League proposal and its implications for the sport's integrity, tradition, and economic model.",
-      chair: {
-        name: "Ariel Araya",
-        image: "/placeholder.svg?height=80&width=80",
-      },
-      coChair: {
-        name: "Jorge Guardia",
-        image: "/placeholder.svg?height=80&width=80",
-      },
-      language: "English",
-      level: "HS",
-      featured: false,
-    },
-    {
-      name: "United Nations Educational, Scientific and Cultural Organization",
-      acronym: "UNESCO",
-      topic: "Bridging the Global Digital Divide in Education",
-      difficulty: "Intermediate",
-      icon: <BookOpen className="w-8 h-8" />,
-      description:
-        "Addresses the critical challenge of ensuring equitable access to digital education resources worldwide, focusing on closing the gap between developed and developing nations.",
-      chair: {
-        name: "Valentina Barzuna",
-        image: "/placeholder.svg?height=80&width=80",
-      },
-      coChair: {
-        name: "Lucía Shum",
-        image: "/placeholder.svg?height=80&width=80",
+        name: "Alexa Kofoed",
+        image: "/committee_portraits/Alexa Kofoed.jpeg",
       },
       language: "English",
       level: "HS",
@@ -99,9 +89,9 @@ export default function CommitteesPage() {
       acronym: "Asamblea Legislativa",
       topic: "Voto: deber o derecho?",
       difficulty: "Intermediate",
-      icon: <Gavel className="w-8 h-8" />,
+      logo: "/committee_logos/AsambleaLegislativa.png",
       description:
-        "A Spanish-language committee examining the fundamental question of voting rights: should voting be considered a civic duty or an individual right? Delegates explore the implications of mandatory versus voluntary participation in democratic processes.",
+        "El abstencionismo costarricense superó el 40% en las elecciones pasadas (Redondo 2024), alarmando a los ciudadanos sobre la verdadera democracia y confianza política en el país. Esto empezó a activar debates sobre el futuro del voto costarricense, junto con la pregunta del voto como derecho libre o deber obligatorio. Por ende, en este comité de la Asamblea Legislativa, se analizará desde un punto de vista legal, social y político, las consecuencias de las diferentes posturas frente a este conflicto. Se utilizarán modelos internacionales como referencias, incluyendo los de Bélgica y Australia, que han aumentado los niveles de participación ciudadana para desarrollar nuestro propio plan de acción de acuerdo a la práctica del sufragio en Costa Rica. Sin embargo, las estructuras de Bélgica, Australia y otros han sido cuestionadas y criticadas por no garantizar una ciudadanía más informada ni solucionar el desinterés político. De este modo, es crucial evaluar y analizar de múltiples perspectivas los ejemplares extranjeros, al igual que las implicaciones nacionales del derecho al voto para garantizar una participación equitativa y rigor democrático en nuestro propio país.",
       chair: {
         name: "Maria Alexandra Sauter",
         image: "/placeholder.svg?height=80&width=80",
@@ -115,20 +105,60 @@ export default function CommitteesPage() {
       featured: false,
     },
     {
-      name: "Food and Agriculture Organization",
-      acronym: "FAO",
-      topic: "Food Security: establishing consumerism rights in the 21st century",
-      difficulty: "Beginner",
-      icon: <UtensilsCrossed className="w-8 h-8" />,
+      name: "United Nations Educational, Scientific and Cultural Organization",
+      acronym: "UNESCO",
+      topic: "Bridging the Global Digital Divide in Education",
+      difficulty: "Intermediate",
+      logo: "/committee_logos/UNESCO logo.png",
       description:
-        "Focuses on global food security challenges and the establishment of consumer rights in the modern era, addressing issues of access, quality, and sustainability in food systems.",
+        "The global digital divide in education refers to unequal access to technology, digital literacy, reliable connectivity, and the skills required to use technology effectively, creating significant disadvantages for those who cannot actively participate in online learning and other digital educational activities. The rapid and widespread shift to remote learning during the COVID-19 pandemic further revealed and worsened the gap between connected and disconnected learners. The issue shows unequal access to a pillar of development: quality education in an ever-evolving digital era. Furthermore, organizations such as UNICEF and UNESCO highlighted how many regions are unable to prioritize digital infrastructure, technological training, or affordability, which hinders academic performance. Although governments have tried to handout access, responses often weren't enough. Therefore, reinforcing the need for universal and equitable digital resources is vital for students to not have to face technological, social, cultural, and economic disparities, as a consequence for lack of connectivity.",
       chair: {
-        name: "Noah Lang",
+        name: "Valentina Barzuna",
         image: "/placeholder.svg?height=80&width=80",
       },
       coChair: {
-        name: "Galia Luconi",
-        image: "/placeholder.svg?height=80&width=80",
+        name: "Lucía Shum",
+        image: "/committee_portraits/Lucia Shum.jpeg",
+      },
+      language: "English",
+      level: "HS",
+      featured: false,
+    },
+    {
+      name: "The Global Council on Mutant Affairs (Marvel X-Men)",
+      acronym: "Special Committee: GCMA",
+      topic: "Addressing the Complex Division Between Mutants and Humans",
+      difficulty: "Intermediate",
+      logo: "/committee_logos/GCMA Logo.jpg",
+      description:
+        "The mutants are much more than just simple superheroes and villains, tracing their roots back to the 1960s, they were made as allegories to marginalised groups in the United States, taking great inspiration from the Civil Rights movement. Similarly, although much more exaggerated, the Mutants' existence and actions raise complex questions about justice, coexistence, and civilian safety. Mutant abilities often lead to the misuse of power, causing mistrust across many sectors of society and government. Mutants face discrimination and persecution, leading to social tensions and violent confrontations, which sometimes escalate to extensive international conflict. The role of Mutants as victims, heroes, and villains places the world in a delicate position. While some strive to bridge understanding between Mutants and Humans, continuous mistrust and violence complicate efforts for peaceful coexistence and mutual regulations. The challenge remains in settling Mutants intrinsic values",
+      chair: {
+        name: "David Sandi",
+        image: "/committee_portraits/David Sandi.jpeg",
+      },
+      coChair: {
+        name: "Amanda Cabrera",
+        image: "/committee_portraits/Amanda Cabrera.jpeg",
+      },
+      language: "English",
+      level: "HS",
+      featured: false,
+    },
+    {
+      name: "Ad Hoc United Nations Security Council",
+      acronym: "Ad Hoc United Nations Security Council",
+      topic: "To be revealed day of conference!",
+      difficulty: "Advanced",
+      logo: "/committee_logos/UN-Logo.png",
+      description:
+        "An ad hoc session of the Security Council addressing urgent humanitarian crises. Delegates must navigate complex political dynamics while prioritizing human welfare and international stability.",
+      chair: {
+        name: "Tomas Villalobos",
+        image: "/committee_portraits/Tomas Villalobos.jpeg",
+      },
+      coChair: {
+        name: "Tomas Van der Laat",
+        image: "/committee_portraits/Tomas van der laat.jpeg",
       },
       language: "English",
       level: "HS",
@@ -138,97 +168,61 @@ export default function CommitteesPage() {
       name: "Disarmament and International Security Committee",
       acronym: "DISEC",
       topic: "Pulling back the curtain on the military-industrial complex: Addressing the role of defense contractors in modern warfare",
-      difficulty: "Advanced",
-      icon: <Bomb className="w-8 h-8" />,
+      difficulty: "Intermediate",
+      logo: "/committee_logos/DISEC Logo.png",
       description:
-        "Examines the complex relationship between governments, defense contractors, and international security, addressing transparency, accountability, and the ethical implications of the military-industrial complex.",
+        "During President Dwight D. Eisenhower's farewell speech, he issued a warning regarding the 'unwarranted influence' of the military-industrial complex, a concept popularized by the later President himself, talking about the symbiotic relationship between a nation's military establishment and the defense industry supplying it. In today's world, this relationship is more powerful than ever, creating a self-sustaining cycle where the demand for weapons drives global warfare, and vice versa. With global defense spending reaching record highs, and conflicts such as the ones in Russia and the Middle East fueling unheard-of amounts of profits for defense contractors, accountability and morality have never been tested more than they are today. The escalation of violence throughout the past few years has caused a rise in military aid and defense budgets worldwide, with nations rushing to restock arsenals and acquire cutting-edge technologies. This arms race directly benefits defence contractors, they are ensuring that military spendings remain a top priority and their bank accounts continue growing. Nations have responded with calls for greater transparency and increases in budgets, but these efforts fail at addressing the root issue. This committee must move past these short-term repairs and develop a plan for extensive, long-term action.",
       chair: {
         name: "Claudia Escorriola",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/committee_portraits/Claudia Escorriola.jpeg",
       },
       coChair: {
         name: "Elena González",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/committee_portraits/Elena Gonzalez.jpeg",
       },
       language: "English",
       level: "HS",
       featured: false,
     },
     {
-      name: "The Global Council on Mutant Affairs",
-      acronym: "GCMA",
-      topic: "Addressing the Complex Division Between Mutants and Humans",
-      difficulty: "Beginner",
-      icon: <Atom className="w-8 h-8" />,
+      name: "European Club Association",
+      acronym: "ECA",
+      topic: "The Future of European Club Football: The Debate of the Super League proposition and the Fight for the Soul of the Game",
+      difficulty: "Intermediate",
+      logo: "/committee_logos/ECA Logo.png",
       description:
-        "A crisis committee addressing the complex social, political, and ethical challenges arising from the division between mutant and human populations, exploring themes of discrimination, coexistence, and mutual understanding.",
+        "A specialized committee examining the future of European football, addressing the controversial Super League proposal and its implications for the sport's integrity, tradition, and economic model.",
       chair: {
-        name: "David Sandi",
-        image: "/placeholder.svg?height=80&width=80",
+        name: "Ariel Araya",
+        image: "/committee_portraits/Ariel Araya.jpeg",
       },
       coChair: {
-        name: "Amanda Cabrera",
-        image: "/placeholder.svg?height=80&width=80",
+        name: "Jorge Guardia",
+        image: "/committee_portraits/Jorge Guardia.jpeg",
       },
       language: "English",
       level: "HS",
       featured: false,
     },
-    {
-      name: "Organization of Islamic Cooperation",
-      acronym: "OIC",
-      topic: "Iran's nuclear weapons",
-      difficulty: "Advanced",
-      icon: <Shield className="w-8 h-8" />,
-      description:
-        "Addresses one of the most pressing security challenges in the Middle East, examining Iran's nuclear program and its implications for regional stability, non-proliferation efforts, and international relations.",
-      chair: {
-        name: "Luna Jervis",
-        image: "/placeholder.svg?height=80&width=80",
-      },
-      coChair: {
-        name: "Luciana Benavidez",
-        image: "/placeholder.svg?height=80&width=80",
-      },
-      language: "English",
-      level: "HS",
-      featured: false,
-    },
-    {
-      name: "Historical United Nations Security Council",
-      acronym: "Historical UNSC",
-      topic: "Checkpoint Crisis: The Berlin Wall Committee",
-      difficulty: "Advanced",
-      icon: <Clock className="w-8 h-8" />,
-      description:
-        "A historical crisis committee set during the Berlin Wall era, where delegates must navigate the tense geopolitical landscape of the Cold War and address critical checkpoint crises that defined an era.",
-      chair: {
-        name: "Elena Sáenz",
-        image: "/placeholder.svg?height=80&width=80",
-      },
-      coChair: {
-        name: "Alexa Kofoed",
-        image: "/placeholder.svg?height=80&width=80",
-      },
-      language: "English",
-      level: "HS",
-      featured: false,
-    },
+  ]
+
+  // MS Committees (keep at end)
+  const msCommittees = [
     {
       name: "United Nations Human Rights Council",
       acronym: "UNHRC",
       topic: "Addressing Human Right Concerns and Exploitation Along the Central Mediterranean Migration Route",
-      difficulty: "Intermediate",
-      icon: <Heart className="w-8 h-8" />,
+      difficulty: "Beginner",
+      logo: "/committee_logos/UNHRC Logo.jpg",
       description:
-        "Examines the critical human rights challenges facing migrants along the Central Mediterranean route, addressing exploitation, trafficking, and the protection of vulnerable populations seeking refuge.",
+        "Migration across the Mediterranean Sea remains the world's most dangerous route, accounting for nearly 70% of all deaths at sea. This crisis has taken a major appeal on global agendas. For decades, migration has been a shattering reality for countless families across these regions, driving families into deepened poverty and creating inhumane living conditions for countless people. These realities have fueled a cycle of instability and widespread human rights violations. Every single year, thousands of refugees embark on the dangerous journey of crossing between North Africa and the Middle East to Europe, seeking safety, economic opportunity, and the hope of a stable future free from conflict. Nonetheless, the lack of safe and legal migration pathways forces many people to rely on criminal gangs, corrupted officials, and unregulated transport providers. To protect human dignity and ensure the safety of migrants, we must urgently address this crisis with sustainable and coordinated solutions. It is essential to ensure that member states address both short term and long term solutions in order to secure safety in the region and bring stability to these vulnerable communities.",
       chair: {
         name: "Gabriela Valerio",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/committee_portraits/Gabriela Valerio.jpeg",
       },
       coChair: {
         name: "Gabriel Molina",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/committee_portraits/Gabriel Molina.jpeg",
       },
       language: "English",
       level: "MS",
@@ -238,17 +232,17 @@ export default function CommitteesPage() {
       name: "United Nations Office on Drugs and Crime",
       acronym: "UNODC",
       topic: "Marijuana: Public Health vs Organized Crime",
-      difficulty: "Intermediate",
-      icon: <Pill className="w-8 h-8" />,
+      difficulty: "Beginner",
+      logo: "/committee_logos/UN-Logo.png",
       description:
-        "Addresses the complex debate surrounding marijuana legalization, balancing public health considerations, medical benefits, and the fight against organized crime in the global drug trade.",
+        "Marijuana is the center of a major global issue, and therefore causes a big international debate. The main question is whether or not it should be legalized, focusing on how it directly affects public health, but also how it encourages organized crime. Many countries have a high public demand for marijuana, but low legal access to it. This creates the perfect environment for illegal sellers to rise. The prohibition of the drug has allowed organized crime to bloom and has incentivised violence. Other nations' concerns focus on citizens' well-being. Marijuana can have equal potential benefits and harms on human health. A main concern related to marijuana is the effect it can have on a young population, a population whose brain is still developing. Unregulated exposure to the drug could create extreme addiction and dependence. In recent years, public awareness and concern have grown, which has led to a divide between those who view marijuana as a criminal issue and those who view it as a health tool, highlighting its good and bad aspects in the industry. Countries like Luxembourg and Canada have legalized the recreational use of cannabis to fight the rise of black market sellers and their consequential violence on citizens. Other nations, like Saudi Arabia and Singapore, have enforced strict prohibition laws, which have perpetuated the illegal selling of marijuana. Huge global disparities on different nations' responses show the struggle of balancing crime prevention, but also prioritizing citizens' health. Short-term efforts can focus on regulating access and educating the public, while long-term efforts could target lowering organized crime rates and creating drug policies that align with social and scientific realities.",
       chair: {
         name: "Emma Holman",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/committee_portraits/Emma Holman.jpeg",
       },
       coChair: {
         name: "Paulina Castro",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/committee_portraits/Paulina Castro.jpeg",
       },
       language: "English",
       level: "MS",
@@ -258,23 +252,25 @@ export default function CommitteesPage() {
       name: "De la Guerra Fría a la Guerra Digital: La OTAN Frente a los Ciberataques",
       acronym: "OTAN",
       topic: "De la Guerra Fría a la Guerra Digital: La OTAN Frente a los Ciberataques",
-      difficulty: "Advanced",
-      icon: <Network className="w-8 h-8" />,
+      difficulty: "Beginner",
+      logo: "/committee_logos/OTAN.png",
       description:
         "A Spanish-language committee examining NATO's evolution from the Cold War era to the digital age, focusing on the alliance's response to modern cyber threats and the transformation of security challenges in the 21st century.",
       chair: {
         name: "Luciana Monge",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/committee_portraits/Luciana Monge.jpeg",
       },
       coChair: {
         name: "Lara Garita",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/committee_portraits/Lara Garita.jpeg",
       },
       language: "Spanish",
       level: "MS",
       featured: false,
     },
   ]
+
+  const committees = [...hsCommittees, ...msCommittees]
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -318,7 +314,11 @@ export default function CommitteesPage() {
               <Link href="/upload" className="text-white hover:text-blue-400 transition-colors">
                 Upload Payment
               </Link>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">Register Now</Button>
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white" asChild>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSedNwUoCCEAvbmzqY21JoNnDv9I5rdT0GOlxxfcjAFi-wv6DA/viewform?usp=header" target="_blank" rel="noopener noreferrer">
+                  Register Now
+                </a>
+              </Button>
             </div>
             <MobileNav />
           </div>
@@ -326,7 +326,7 @@ export default function CommitteesPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
+      <section className="pt-24 pb-12 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -335,8 +335,8 @@ export default function CommitteesPage() {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-400/30">
-              <Building className="w-4 h-4 mr-2" />
+            <Badge className="mb-5 py-2 px-4 text-base bg-blue-600/20 text-blue-300 border-blue-400/30">
+              <Building className="w-5 h-5 mr-2" />
               Conference Committees
             </Badge>
 
@@ -373,8 +373,14 @@ export default function CommitteesPage() {
                   <CardContent className="p-8">
                     <div className="flex items-start justify-between mb-6">
                       <div className="flex items-center space-x-4">
-                        <div className="bg-blue-600/20 w-16 h-16 rounded-2xl flex items-center justify-center">
-                          <div className="text-blue-400">{committee.icon}</div>
+                        <div className="bg-white w-20 h-20 rounded-2xl flex items-center justify-center p-2">
+                          <Image
+                            src={committee.logo}
+                            alt={`${committee.acronym} logo`}
+                            width={64}
+                            height={64}
+                            className="object-contain"
+                          />
                         </div>
                         <div>
                           <h3 className="text-2xl font-bold text-white mb-1">{committee.acronym}</h3>
@@ -409,9 +415,9 @@ export default function CommitteesPage() {
                           <Image
                             src={committee.chair.image || "/placeholder.svg"}
                             alt={committee.chair.name}
-                            width={80}
-                            height={80}
-                            className="w-16 h-16 rounded-full"
+                            width={120}
+                            height={120}
+                            className="w-24 h-24 rounded-full object-cover"
                           />
                           <div>
                             <div className="font-semibold text-white">Chair: {committee.chair.name}</div>
@@ -421,9 +427,9 @@ export default function CommitteesPage() {
                           <Image
                             src={committee.coChair.image || "/placeholder.svg"}
                             alt={committee.coChair.name}
-                            width={80}
-                            height={80}
-                            className="w-16 h-16 rounded-full"
+                            width={120}
+                            height={120}
+                            className="w-24 h-24 rounded-full object-cover"
                           />
                           <div>
                             <div className="font-semibold text-white">Co-Chair: {committee.coChair.name}</div>
@@ -457,8 +463,14 @@ export default function CommitteesPage() {
               <DialogHeader>
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center space-x-4">
-                    <div className="bg-blue-600/20 w-20 h-20 rounded-2xl flex items-center justify-center">
-                      <div className="text-blue-400 text-4xl">{committees[selectedCommittee].icon}</div>
+                    <div className="bg-white w-24 h-24 rounded-2xl flex items-center justify-center p-2">
+                      <Image
+                        src={committees[selectedCommittee].logo}
+                        alt={`${committees[selectedCommittee].acronym} logo`}
+                        width={80}
+                        height={80}
+                        className="object-contain"
+                      />
                     </div>
                     <div>
                       <DialogTitle className="text-3xl font-bold text-white mb-2">
@@ -504,9 +516,9 @@ export default function CommitteesPage() {
                       <Image
                         src={committees[selectedCommittee].chair.image || "/placeholder.svg"}
                         alt={committees[selectedCommittee].chair.name}
-                        width={160}
-                        height={160}
-                        className="w-40 h-40 rounded-full"
+                        width={280}
+                        height={400}
+                        className="w-[280px] h-[400px] rounded-xl object-cover"
                       />
                       <div>
                         <div className="text-base text-gray-400 mb-2">Chair</div>
@@ -517,9 +529,9 @@ export default function CommitteesPage() {
                       <Image
                         src={committees[selectedCommittee].coChair.image || "/placeholder.svg"}
                         alt={committees[selectedCommittee].coChair.name}
-                        width={160}
-                        height={160}
-                        className="w-40 h-40 rounded-full"
+                        width={280}
+                        height={400}
+                        className="w-[280px] h-[400px] rounded-xl object-cover"
                       />
                       <div>
                         <div className="text-base text-gray-400 mb-2">Co-Chair</div>

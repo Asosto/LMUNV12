@@ -73,7 +73,11 @@ export default function ConferenceInfoPage() {
               <Link href="/upload" className="text-white hover:text-blue-400 transition-colors">
                 Upload Payment
               </Link>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">Register Now</Button>
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white" asChild>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSedNwUoCCEAvbmzqY21JoNnDv9I5rdT0GOlxxfcjAFi-wv6DA/viewform?usp=header" target="_blank" rel="noopener noreferrer">
+                  Register Now
+                </a>
+              </Button>
             </div>
             <MobileNav />
           </div>
@@ -90,8 +94,8 @@ export default function ConferenceInfoPage() {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-400/30">
-              <Info className="w-4 h-4 mr-2" />
+            <Badge className="mb-5 py-2 px-4 text-base bg-blue-600/20 text-blue-300 border-blue-400/30">
+              <Info className="w-5 h-5 mr-2" />
               Essential Information
             </Badge>
 
@@ -120,7 +124,7 @@ export default function ConferenceInfoPage() {
             className="text-center mb-16"
           >
             <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-400/30">
-              <Calendar className="w-4 h-4 mr-2" />
+              <Calendar className="w-5 h-5 mr-2" />
               Conference Schedule
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">CONFERENCE SCHEDULE</h2>
