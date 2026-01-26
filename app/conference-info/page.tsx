@@ -64,7 +64,7 @@ export default function ConferenceInfoPage() {
               <Link href="/gallery" className="text-white hover:text-blue-400 transition-colors">
                 Gallery
               </Link>
-              <Link href="/conference-info" className="text-blue-400 font-medium">
+              <Link href="/soon" className="text-blue-400 font-medium">
                 Conference Information
               </Link>
               <Link href="/resources" className="text-white hover:text-blue-400 transition-colors">

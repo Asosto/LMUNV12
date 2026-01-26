@@ -49,7 +49,7 @@ export default function GalleryPage() {
               <Link href="/gallery" className="text-blue-400 font-medium">
                 Gallery
               </Link>
-              <Link href="/conference-info" className="text-white hover:text-blue-400 transition-colors">
+              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
                 Conference Information
               </Link>
               <Link href="/resources" className="text-white hover:text-blue-400 transition-colors">

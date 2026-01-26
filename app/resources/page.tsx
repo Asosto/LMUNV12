@@ -86,7 +86,7 @@ export default function ResourcesPage() {
               <Link href="/gallery" className="text-white hover:text-blue-400 transition-colors">
                 Gallery
               </Link>
-              <Link href="/conference-info" className="text-white hover:text-blue-400 transition-colors">
+              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
                 Conference Information
               </Link>
               <Link href="/resources" className="text-blue-400 font-medium">
