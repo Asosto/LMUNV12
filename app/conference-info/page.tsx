@@ -146,7 +146,7 @@ export default function ConferenceInfoPage() {
           <div className="space-y-16">
             {[
               {
-                day: "Friday, March 7, 2026",
+                day: "Saturday, March 7, 2026",
                 date: "Day 1",
                 events: [
                   {
@@ -199,7 +199,7 @@ export default function ConferenceInfoPage() {
                     description: "Refreshments and informal discussions",
                   },
                   {
-                    time: "4:00 PM - 6:00 PM",
+                    time: "4:00 PM - 5:00 PM",
                     title: "Committee Session III",
                     location: "Various Committee Rooms",
                     type: "session",
@@ -208,7 +208,7 @@ export default function ConferenceInfoPage() {
                 ],
               },
               {
-                day: "Saturday, March 8, 2026",
+                day: "Sunday, March 8, 2026",
                 date: "Day 2",
                 events: [
                   {
@@ -253,27 +253,7 @@ export default function ConferenceInfoPage() {
                     type: "session",
                     description: "Final resolution drafting and voting procedures",
                   },
-                  {
-                    time: "4:00 PM - 4:30 PM",
-                    title: "Afternoon Break",
-                    location: "Conference Center Atrium",
-                    type: "break",
-                    description: "Last networking opportunity before final sessions",
-                  },
-                  {
-                    time: "4:30 PM - 6:30 PM",
-                    title: "Committee Session VI",
-                    location: "Various Committee Rooms",
-                    type: "session",
-                    description: "Final voting and resolution adoption",
-                  },
-                  {
-                    time: "7:30 PM - 10:00 PM",
-                    title: "Gala Dinner & Awards Ceremony",
-                    location: "Grand Ballroom",
-                    type: "ceremony",
-                    description: "Formal gala with awards presentation and entertainment",
-                  },
+          
                 ],
               },
             ].map((day, dayIndex) => (
