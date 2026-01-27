@@ -7,8 +7,9 @@ import { useState } from "react"
 import { supabase } from '@/lib/supabase'
 import { useRouter } from "next/navigation"
 import { useToast } from "@/components/ui/use-toast"
-import { Globe, ArrowLeft } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState("")
@@ -66,7 +67,7 @@ export default function AdminLoginPage() {
         <Card className="w-[400px] bg-white/10 backdrop-blur-md border-white/20 text-white shadow-2xl">
           <CardHeader className="text-center">
             <Link href="/" className="flex items-center justify-center space-x-2 mb-4">
-              <Globe className="w-10 h-10 text-blue-400" />
+              <Image src="/logo.png" alt="LMUN Logo" width={40} height={40} className="object-contain" />
               <span className="text-2xl font-bold">LMUN</span>
             </Link>
             <CardTitle className="text-2xl font-semibold">Admin Portal</CardTitle>
