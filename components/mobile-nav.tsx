@@ -14,7 +14,7 @@ export function MobileNav() {
     { name: "Home", href: "/" },
     { name: "Committees", href: "/committees" },
     { name: "Gallery", href: "/gallery" },
-    { name: "Conference Information", href: "/soon" },
+    { name: "Conference Information", href: "/conference-info" },
     { name: "Resources", href: "/resources" },
     { name: "Upload Payment", href: "/upload" },
     { name: "Admin", href: "/admin/login" },

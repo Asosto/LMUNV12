@@ -25,7 +25,7 @@ export function Footer() {
                 <Link href="/gallery" className="block text-gray-400 hover:text-white transition-colors">
                   Gallery
                 </Link>
-                <Link href="/soon" className="block text-gray-400 hover:text-white transition-colors">
+                <Link href="/conference-info" className="block text-gray-400 hover:text-white transition-colors">
                   Conference Information
                 </Link>
                 <Link href="/resources" className="block text-gray-400 hover:text-white transition-colors">
@@ -39,15 +39,6 @@ export function Footer() {
             <div>
               <h3 className="font-semibold text-white mb-4">Support</h3>
               <div className="space-y-2">
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  Help Center
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  Contact Us
-                </a>
-                <a href="#" className="block text-gray-400 hover:text-white transition-colors">
-                  FAQs
-                </a>
                 <Link href="/admin/dashboard" className="block text-gray-400 hover:text-white transition-colors">
                   Admin
                 </Link>

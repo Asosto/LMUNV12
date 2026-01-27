@@ -53,7 +53,7 @@ export default function CommitteesPage() {
       description:
         "In the contemporary global system, food security has also come to refer to safety, transparency, and consumer confidence in food, apart from the commonly recognized issue of food availability. With the extension of the global food system, the growing disparity in the food handling standards of different nations regarding food labeling, certification, limits of pesticide residues on food, etc., has now emerged as an issue related to food safety, creating public health hazards as well as hindering international food trade. Another factor related to food security is the practice of the use of vague and misleading descriptions of food, which has now come to compromise the public's food selection capabilities as well. Some have argued to execute stricter measures in food security through the implementation of the harmonized food security standards of various countries, while others have argued to implement these measures gradually to ensure food security of the food vendors as well.",
       chair: {
-        name: "Noah Lang",
+        name: "Valentina Cañas",
         image: "/placeholder.svg?height=80&width=80",
       },
       coChair: {
@@ -147,7 +147,7 @@ export default function CommitteesPage() {
     {
       name: "Ad Hoc United Nations Security Council",
       acronym: "Ad Hoc United Nations Security Council",
-      topic: "To be revealed day of conference!",
+      topic: "The study guide and topic will be revealed the day the conference starts!",
       difficulty: "Advanced",
       logo: "/committee_logos/UN-Logo.png",
       description:
@@ -305,7 +305,7 @@ export default function CommitteesPage() {
               <Link href="/gallery" className="text-white hover:text-blue-400 transition-colors">
                 Gallery
               </Link>
-              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
+              <Link href="/conference-info" className="text-white hover:text-blue-400 transition-colors">
                 Conference Information
               </Link>
               <Link href="/resources" className="text-white hover:text-blue-400 transition-colors">

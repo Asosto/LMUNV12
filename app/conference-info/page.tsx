@@ -4,46 +4,13 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Globe, MapPin, Download, Award, ArrowRight, Calendar, Info, Mic, Building, Clock, Users, Coffee, Utensils, CheckCircle } from "lucide-react"
+import { Globe, MapPin, Download, Award, ArrowRight, Calendar, Info, Mic, Building, Clock, Users, Coffee, Utensils, CheckCircle, DollarSign } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { MobileNav } from "@/components/mobile-nav"
 import { Footer } from "@/components/Footer"
 
 export default function ConferenceInfoPage() {
-  const feeStructure = [
-    {
-      type: "Early Bird Registration",
-      fee: "$150",
-      deadline: "Until December 15, 2024",
-      includes: ["All committee sessions", "Conference materials", "Opening & closing ceremonies", "Cultural night"],
-    },
-    {
-      type: "Regular Registration",
-      fee: "$200",
-      deadline: "December 16, 2024 - February 15, 2025",
-      includes: ["All committee sessions", "Conference materials", "Opening & closing ceremonies", "Cultural night"],
-    },
-    {
-      type: "Late Registration",
-      fee: "$250",
-      deadline: "February 16, 2025 - March 1, 2025",
-      includes: ["All committee sessions", "Conference materials", "Opening & closing ceremonies", "Cultural night"],
-    },
-    {
-      type: "School Delegation (10+ delegates)",
-      fee: "$130 per delegate",
-      deadline: "Any time before March 1, 2025",
-      includes: [
-        "All committee sessions",
-        "Conference materials",
-        "Opening & closing ceremonies",
-        "Cultural night",
-        "Faculty advisor support",
-      ],
-    },
-  ]
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       {/* Navigation */}
@@ -64,7 +31,7 @@ export default function ConferenceInfoPage() {
               <Link href="/gallery" className="text-white hover:text-blue-400 transition-colors">
                 Gallery
               </Link>
-              <Link href="/soon" className="text-blue-400 font-medium">
+              <Link href="/conference-info" className="text-blue-400 font-medium">
                 Conference Information
               </Link>
               <Link href="/resources" className="text-white hover:text-blue-400 transition-colors">
@@ -85,7 +52,7 @@ export default function ConferenceInfoPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
+      <section className="pt-24 pb-12 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -94,6 +61,7 @@ export default function ConferenceInfoPage() {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
+            <div className="mb-8"></div>
             <Badge className="mb-5 py-2 px-4 text-base bg-blue-600/20 text-blue-300 border-blue-400/30">
               <Info className="w-5 h-5 mr-2" />
               Essential Information
@@ -107,15 +75,96 @@ export default function ConferenceInfoPage() {
             </h1>
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Everything you need to know about LMUN 2026, from venue details to registration fees and special
-              events. Plan your diplomatic journey with confidence.
+              Everything you need to know about LMUN 2026, from venue details to conference registration fees!
             </p>
           </motion.div>
         </div>
       </section>
 
+      {/* Committee Groups Section */}
+      <section className="py-12 bg-gradient-to-r from-blue-900/30 to-purple-900/30">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-400/30">
+              <Users className="w-5 h-5 mr-2" />
+              Committee Groups
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">COMMITTEE GROUPS</h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto"
+          >
+            <Card className="bg-white/10 backdrop-blur-md border-white/20">
+              <CardContent className="p-8">
+                <div className="grid md:grid-cols-2 gap-8 relative">
+                  {/* Group 1 */}
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-bold text-white mb-4 text-center md:text-left">
+                      Group / Grupo 1
+                    </h3>
+                    <div className="space-y-2">
+                      {[
+                        "Ad Hoc UNSC",
+                        "ECA",
+                        "UNESCO",
+                        "Asamblea Legislativa",
+                        "FAO",
+                        "DISEC",
+                      ].map((committee, index) => (
+                        <div
+                          key={index}
+                          className="text-blue-300 text-lg py-2 border-b border-white/10 last:border-0"
+                        >
+                          {committee}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-blue-400/30" />
+
+                  {/* Group 2 */}
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-bold text-white mb-4 text-center md:text-left">
+                      Group / Grupo 2
+                    </h3>
+                    <div className="space-y-2">
+                      {[
+                        "GCMA",
+                        "OIC",
+                        "Historical UNSC",
+                        "UNHRC (MS)",
+                        "UNODC (MS)",
+                        "OTAN (MS)",
+                      ].map((committee, index) => (
+                        <div
+                          key={index}
+                          className="text-blue-300 text-lg py-2 border-b border-white/10 last:border-0"
+                        >
+                          {committee}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Schedule Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-900/30 to-purple-900/30">
+      <section className="py-12 bg-gradient-to-r from-blue-900/30 to-purple-900/30">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -128,230 +177,185 @@ export default function ConferenceInfoPage() {
               Conference Schedule
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">CONFERENCE SCHEDULE</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Three days of intensive diplomatic simulation, networking, and learning. Plan your conference experience
-              with our detailed schedule of events.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                Download Full Schedule
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
-                Add to Calendar
-              </Button>
-            </div>
           </motion.div>
 
-          <div className="space-y-16">
+          <div className="space-y-12">
             {[
               {
-                day: "Saturday, March 7, 2026",
+                day: "DAY 1 - MAR. 7th, 2026",
                 date: "Day 1",
-                events: [
+                groups: [
                   {
-                    time: "8:00 AM - 9:00 AM",
-                    title: "Registration & Welcome Breakfast",
-                    location: "Main Lobby",
-                    type: "registration",
-                    description: "Check-in, receive conference materials, and network with fellow delegates",
+                    name: "Group 1",
+                    events: [
+                      { time: "8:30 am – 10:00 am", title: "Opening Ceremony", type: "ceremony", location: "Lincoln Auditorium", description: "Welcome address by the Secretariat and panel speakers" },
+                      { time: "10:00 am – 10:15 am", title: "Snack", type: "break", location: "Outside Committee Classrooms", description: "Refreshments and snacks!" },
+                      { time: "10:15 am – 12:15 pm", title: "Committee Session 1", type: "session", location: "Committee Rooms", description: "First formal committee session" },
+                      { time: "10:30 am – 11:15 am", title: "Faculty Advisor Meeting", type: "special", location: "HS Building - 2nd Floor Teachers Lounge", description: "Meeting for faculty advisors" },
+                      { time: "12:15 pm – 1:00 pm", title: "Lunch", type: "meal", location: "Tentative", description: "Lunch/Break Time!" },
+                      { time: "1:00 pm – 3:15 pm", title: "Committee Session 2", type: "session", location: "Committee Rooms", description: "Second formal committee session" },
+                      { time: "3:15 pm – 3:30 pm", title: "Snack", type: "break", location: "Outside Committee Classrooms", description: "Afternoon refreshments and snacks" },
+                      { time: "3:30 pm – 5:00 pm", title: "Committee Session 3", type: "session", location: "Committee Rooms", description: "Third formal committee session" },
+                      { time: "5:00 pm – 5:30 pm", title: "Special Surprise", type: "special", location: "Lincoln Deck & Central Plaza", description: "To be revealed day of conference!" },
+
+                    ],
                   },
                   {
-                    time: "9:00 AM - 10:00 AM",
-                    title: "Opening Ceremony",
-                    location: "General Assembly Hall",
-                    type: "ceremony",
-                    description: "Welcome address by Secretary-General and keynote speaker",
-                  },
-                  {
-                    time: "10:00 AM - 10:30 AM",
-                    title: "Coffee Break & Networking",
-                    location: "Conference Center Atrium",
-                    type: "break",
-                    description: "Connect with delegates and enjoy refreshments",
-                  },
-                  {
-                    time: "10:30 AM - 12:30 PM",
-                    title: "Committee Session I",
-                    location: "Various Committee Rooms",
-                    type: "session",
-                    description: "First formal committee session - opening statements and initial debate",
-                  },
-                  {
-                    time: "12:30 PM - 1:30 PM",
-                    title: "Lunch Break",
-                    location: "Conference Center Dining Hall",
-                    type: "meal",
-                    description: "Networking lunch with international cuisine",
-                  },
-                  {
-                    time: "1:30 PM - 3:30 PM",
-                    title: "Committee Session II",
-                    location: "Various Committee Rooms",
-                    type: "session",
-                    description: "Continued debate and initial resolution drafting",
-                  },
-                  {
-                    time: "3:30 PM - 4:00 PM",
-                    title: "Afternoon Break",
-                    location: "Conference Center Atrium",
-                    type: "break",
-                    description: "Refreshments and informal discussions",
-                  },
-                  {
-                    time: "4:00 PM - 5:00 PM",
-                    title: "Committee Session III",
-                    location: "Various Committee Rooms",
-                    type: "session",
-                    description: "Working groups and resolution development",
+                    name: "Group 2",
+                    events: [
+                      { time: "8:30 am – 10:00 am", title: "Opening Ceremony", type: "ceremony", location: "Lincoln Auditorium", description: "Welcome address by Secretary-General and keynote speaker" },
+                      { time: "10:00 am – 10:15 am", title: "Snack", type: "break", location: "Outside Committee Classrooms", description: "Refreshments and networking" },
+                      { time: "10:15 am – 12:30 pm", title: "Committee Session 1", type: "session", location: "Committee Rooms", description: "First formal committee session - opening statements and initial debate" },
+                      { time: "10:30 am – 11:15 am", title: "Faculty Advisor Meeting", type: "special", location: "Conference Room", description: "Meeting for faculty advisors" },
+                      { time: "12:30 pm – 1:15 pm", title: "Lunch", type: "meal", location: "Conference Center Dining Hall", description: "Networking lunch with international cuisine" },
+                      { time: "1:15 pm – 3:30 pm", title: "Committee Session 2", type: "session", location: "Committee Rooms", description: "Continued debate and initial resolution drafting" },
+                      { time: "3:30 pm – 3:45 pm", title: "Snack", type: "break", location: "Outside Committee Classrooms", description: "Afternoon refreshments" },
+                      { time: "3:45 pm – 5:00 pm", title: "Committee Session 3", type: "session", location: "Committee Rooms", description: "Third formal committee session" },
+                      { time: "5:00 pm – 5:30 pm", title: "Special Surprise", type: "special", location: "Lincoln Deck & Central Plaza", description: "To be revealed day of conference!" },
+                    ],
                   },
                 ],
               },
               {
-                day: "Sunday, March 8, 2026",
+                day: "DAY 2 - MAR. 8th, 2026",
                 date: "Day 2",
-                events: [
+                groups: [
                   {
-                    time: "8:00 AM - 9:00 AM",
-                    title: "Breakfast & Morning Briefing",
-                    location: "Conference Center Dining Hall",
-                    type: "meal",
-                    description: "Continental breakfast and daily briefing",
+                    name: "Group 1",
+                    events: [
+                      { time: "9:00 am – 10:30 am", title: "Committee Session 4", type: "session", location: "Committee Rooms", description: "Fourth formal committee session" },
+                      { time: "10:30 am – 10:45 am", title: "Snack", type: "break", location: "Outside Committee Classrooms", description: "Mid-morning refreshments and snacks" },
+                      { time: "10:45 am – 12:30 pm", title: "Committee Session 5", type: "session", location: "Committee Rooms", description: "Fifth  formal committee session" },
+                      { time: "12:30 pm – 1:15 pm", title: "Lunch", type: "meal", location: "Conference Center Dining Hall", description: "Working lunch with committee members" },
+                      { time: "1:15 pm – 3:00 pm", title: "Committee Session 6", type: "session", location: "Committee Rooms", description: "Final formal committee session and resolution paper presentations" },
+                      { time: "3:00 pm – 3:15 pm", title: "Snack", type: "break", location: "Outside Committee Classrooms", description: "Afternoon refreshments and snacks" },
+                      { time: "3:15 pm – 4:00 pm", title: "Closing Ceremony", type: "ceremony", location: "Lincoln Auditorium", description: "Awards ceremony and closing remarks" },
+                    ],
                   },
                   {
-                    time: "9:00 AM - 11:00 AM",
-                    title: "Committee Session IV",
-                    location: "Various Committee Rooms",
-                    type: "session",
-                    description: "Intensive debate and amendment discussions",
+                    name: "Group 2",
+                    events: [
+                      { time: "9:00 am – 10:15 am", title: "Committee Session 4", type: "session", location: "Committee Rooms", description: "Fourth formal committee session" },
+                      { time: "10:15 am – 10:30 am", title: "Snack", type: "break", location: "Outside Committee Classrooms", description: "Mid-morning refreshments and snacks" },
+                      { time: "10:30 am – 12:15 pm", title: "Committee Session 5", type: "session", location: "Committee Rooms", description: "Fifth formal committee session" },
+                      { time: "12:15 pm – 1:00 pm", title: "Lunch", type: "meal", location: "Conference Center Dining Hall", description: "Working lunch with committee members" },
+                      { time: "1:00 pm – 2:50 pm", title: "Committee Session 6", type: "session", location: "Committee Rooms", description: "Final formal committee session and resolution paper presentations" },
+                      { time: "2:50 pm – 3:15 pm", title: "Snack", type: "break", location: "Outside Committee Classrooms", description: "Afternoon refreshments and snacks" },
+                      { time: "3:15 pm – 4:00 pm", title: "Closing Ceremony", type: "ceremony", location: "Lincoln Auditorium", description: "Awards ceremony and closing remarks" },
+                    ],
                   },
-                  {
-                    time: "11:00 AM - 11:30 AM",
-                    title: "Coffee Break",
-                    location: "Conference Center Atrium",
-                    type: "break",
-                    description: "Mid-morning refreshments",
-                  },
-                  {
-                    time: "11:30 AM - 1:00 PM",
-                    title: "Crisis Committee Special Session",
-                    location: "Security Council Chamber",
-                    type: "special",
-                    description: "Emergency session addressing breaking international crisis",
-                  },
-                  {
-                    time: "1:00 PM - 2:00 PM",
-                    title: "Lunch Break",
-                    location: "Conference Center Dining Hall",
-                    type: "meal",
-                    description: "Working lunch with committee members",
-                  },
-                  {
-                    time: "2:00 PM - 4:00 PM",
-                    title: "Committee Session V",
-                    location: "Various Committee Rooms",
-                    type: "session",
-                    description: "Final resolution drafting and voting procedures",
-                  },
-          
                 ],
               },
-            ].map((day, dayIndex) => (
-              <motion.div
-                key={dayIndex}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: dayIndex * 0.2 }}
-              >
-                <div className="text-center mb-12">
-                  <Badge className="mb-4 bg-blue-600/20 text-blue-300 border-blue-400/30 text-lg px-4 py-2">
-                    {day.date}
-                  </Badge>
-                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">{day.day}</h3>
-                </div>
+            ].map((day, dayIndex) => {
+              const getEventIcon = (type: string) => {
+                switch (type) {
+                  case "ceremony":
+                    return <Award className="w-4 h-4" />
+                  case "session":
+                    return <Users className="w-4 h-4" />
+                  case "break":
+                    return <Coffee className="w-4 h-4" />
+                  case "meal":
+                    return <Utensils className="w-4 h-4" />
+                  case "special":
+                    return <Award className="w-4 h-4" />
+                  default:
+                    return <Clock className="w-4 h-4" />
+                }
+              }
 
-                <div className="space-y-6">
-                  {day.events.map((event, eventIndex) => {
-                    const getEventIcon = (type: string) => {
-                      switch (type) {
-                        case "registration":
-                          return <CheckCircle className="w-5 h-5" />
-                        case "ceremony":
-                          return <Award className="w-5 h-5" />
-                        case "session":
-                          return <Users className="w-5 h-5" />
-                        case "break":
-                          return <Coffee className="w-5 h-5" />
-                        case "meal":
-                          return <Utensils className="w-5 h-5" />
-                        case "special":
-                          return <Award className="w-5 h-5" />
-                        default:
-                          return <Clock className="w-5 h-5" />
-                      }
-                    }
+              const getEventColor = (type: string) => {
+                switch (type) {
+                  case "ceremony":
+                    return "bg-purple-600/20 text-purple-300 border-purple-400/30"
+                  case "session":
+                    return "bg-blue-600/20 text-blue-300 border-blue-400/30"
+                  case "break":
+                    return "bg-orange-600/20 text-orange-300 border-orange-400/30"
+                  case "meal":
+                    return "bg-yellow-600/20 text-yellow-300 border-yellow-400/30"
+                  case "special":
+                    return "bg-red-600/20 text-red-300 border-red-400/30"
+                  default:
+                    return "bg-gray-600/20 text-gray-300 border-gray-400/30"
+                }
+              }
 
-                    const getEventColor = (type: string) => {
-                      switch (type) {
-                        case "registration":
-                          return "bg-green-600/20 text-green-300 border-green-400/30"
-                        case "ceremony":
-                          return "bg-purple-600/20 text-purple-300 border-purple-400/30"
-                        case "session":
-                          return "bg-blue-600/20 text-blue-300 border-blue-400/30"
-                        case "break":
-                          return "bg-orange-600/20 text-orange-300 border-orange-400/30"
-                        case "meal":
-                          return "bg-yellow-600/20 text-yellow-300 border-yellow-400/30"
-                        case "special":
-                          return "bg-red-600/20 text-red-300 border-red-400/30"
-                        default:
-                          return "bg-gray-600/20 text-gray-300 border-gray-400/30"
-                      }
-                    }
+              return (
+                <motion.div
+                  key={dayIndex}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: dayIndex * 0.2 }}
+                  className="space-y-6"
+                >
+                  <div className="text-center">
+                    <Badge className="mb-3 bg-blue-600/20 text-blue-300 border-blue-400/30 text-base px-3 py-1">
+                      {day.date}
+                    </Badge>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">{day.day}</h3>
+                  </div>
 
-                    return (
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {day.groups.map((group, groupIndex) => (
                       <motion.div
-                        key={eventIndex}
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, delay: eventIndex * 0.1 }}
+                        key={groupIndex}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: groupIndex * 0.1 }}
                       >
                         <Card className="bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15 transition-all duration-300">
-                          <CardContent className="p-6">
-                            <div className="flex flex-col md:flex-row md:items-center gap-4">
-                              <div className="flex items-center space-x-4 md:w-1/4">
-                                <div className={`p-2 rounded-lg ${getEventColor(event.type)}`}>
-                                  {getEventIcon(event.type)}
-                                </div>
-                                <div className="font-mono text-blue-400 font-semibold">{event.time}</div>
-                              </div>
+                          <CardContent className="p-5">
+                            <div className="mb-6 text-center">
+                              <Badge className="bg-blue-600/40 text-white border-blue-400/50 text-lg font-bold px-6 py-2">
+                                {group.name}
+                              </Badge>
+                            </div>
+                            <div className="space-y-3">
+                              {group.events.map((event, eventIndex) => (
+                                <div key={eventIndex}>
+                                  <Card className="bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 transition-all duration-300">
+                                    <CardContent className="p-4">
+                                      <div className="flex flex-col gap-2">
+                                        <div className="flex items-center justify-between gap-2">
+                                          <div className="flex items-center space-x-2">
+                                            <div className={`p-1.5 rounded-lg ${getEventColor(event.type)}`}>
+                                              {getEventIcon(event.type)}
+                                            </div>
+                                            <div className="font-mono text-blue-400 font-semibold text-sm">{event.time}</div>
+                                          </div>
+                                          <Badge className={`${getEventColor(event.type)} capitalize text-xs`}>{event.type}</Badge>
+                                        </div>
 
-                              <div className="flex-1">
-                                <h4 className="text-xl font-semibold text-white mb-2">{event.title}</h4>
-                                <p className="text-gray-300 mb-2">{event.description}</p>
-                                <div className="flex items-center space-x-2 text-gray-400">
-                                  <MapPin className="w-4 h-4" />
-                                  <span>{event.location}</span>
+                                        <div>
+                                          <h4 className="text-base font-semibold text-white mb-1">{event.title}</h4>
+                                          <p className="text-sm text-gray-300 mb-1 line-clamp-2">{event.description}</p>
+                                          <div className="flex items-center space-x-1 text-gray-400 text-xs">
+                                            <MapPin className="w-3 h-3" />
+                                            <span>{event.location}</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </CardContent>
+                                  </Card>
                                 </div>
-                              </div>
-
-                              <Badge className={`${getEventColor(event.type)} capitalize`}>{event.type}</Badge>
+                              ))}
                             </div>
                           </CardContent>
                         </Card>
                       </motion.div>
-                    )
-                  })}
-                </div>
-              </motion.div>
-            ))}
+                    ))}
+                  </div>
+                </motion.div>
+              )
+            })}
           </div>
         </div>
       </section>
 
       {/* Fee Structure */}
-      <section className="py-20 bg-gradient-to-r from-blue-900/30 to-purple-900/30">
+      <section className="py-12 bg-gradient-to-r from-blue-900/30 to-purple-900/30">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -360,47 +364,27 @@ export default function ConferenceInfoPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">REGISTRATION FEES</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Transparent fee structure with options for early registration discounts and school delegations
-            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {feeStructure.map((fee, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-              >
-                <Card className="bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15 transition-all duration-300 h-full">
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-xl font-semibold text-white">{fee.type}</h3>
-                      <Badge className="bg-blue-600/20 text-blue-300 border-blue-400/30 text-lg px-3 py-1">
-                        {fee.fee}
-                      </Badge>
-                    </div>
-                    <div className="flex items-center space-x-2 text-gray-300 mb-4">
-                      <Calendar className="w-4 h-4 text-blue-400" />
-                      <span>{fee.deadline}</span>
-                    </div>
-                    <div className="bg-blue-900/30 rounded-xl p-4">
-                      <h4 className="font-semibold text-blue-300 mb-2">What's Included:</h4>
-                      <ul className="space-y-2">
-                        {fee.includes.map((item, i) => (
-                          <li key={i} className="flex items-start space-x-2 text-gray-300">
-                            <span className="text-blue-400 mt-1">•</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex justify-center"
+          >
+            <div className="relative bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 max-w-4xl">
+              <Image
+                src="/Costs.png"
+                alt="Conference Costs"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-lg"
+              />
+              <div className="absolute -bottom-6 -right-6 bg-blue-600 rounded-full p-4 shadow-lg">
+                <DollarSign className="w-8 h-8 text-white" />
+              </div>
+            </div>
+          </motion.div>
 
        
         </div>
@@ -408,7 +392,7 @@ export default function ConferenceInfoPage() {
 
       {/* Guest Speaker */}
       {/* Temporarily hidden - Ambassador James Wilson section
-      <section className="py-20">
+      <section className="py-12">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -458,7 +442,7 @@ export default function ConferenceInfoPage() {
       */}
 
       {/* Memorial Award */}
-      <section className="py-20 bg-gradient-to-r from-blue-900/50 to-purple-900/50">
+      <section className="py-12 bg-gradient-to-r from-blue-900/50 to-purple-900/50">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div

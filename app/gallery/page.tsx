@@ -49,7 +49,7 @@ export default function GalleryPage() {
               <Link href="/gallery" className="text-blue-400 font-medium">
                 Gallery
               </Link>
-              <Link href="/soon" className="text-white hover:text-blue-400 transition-colors">
+              <Link href="/conference-info" className="text-white hover:text-blue-400 transition-colors">
                 Conference Information
               </Link>
               <Link href="/resources" className="text-white hover:text-blue-400 transition-colors">
@@ -118,6 +118,9 @@ export default function GalleryPage() {
                         alt={`LMUN ${yearData.year} Gallery`}
                         fill
                         className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        quality={75}
+                        loading="lazy"
                       />
                     </div>
                     <div className="p-8 flex flex-col items-center justify-center flex-1">
