@@ -67,7 +67,7 @@ export default function AdminLoginPage() {
           <CardHeader className="text-center">
             <Link href="/" className="flex items-center justify-center space-x-2 mb-4">
               <Globe className="w-10 h-10 text-blue-400" />
-              <span className="text-2xl font-bold">Global MUN</span>
+              <span className="text-2xl font-bold">LMUN</span>
             </Link>
             <CardTitle className="text-2xl font-semibold">Admin Portal</CardTitle>
             <CardDescription className="text-gray-400">
