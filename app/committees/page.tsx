@@ -191,7 +191,7 @@ export default function CommitteesPage() {
       difficulty: "Intermediate",
       logo: "/committee_logos/ECA Logo.png",
       description:
-        "A specialized committee examining the future of European football, addressing the controversial Super League proposal and its implications for the sport's integrity, tradition, and economic model.",
+          "The ECA is responsible for providing input into how European football is governed through its close relationship with UEFA; this includes both the governance of European football and the commercial framework that underpins it. The ECA was established in 2008 to represent the interests of all clubs in the UEFA Member Associations; the ECA also provides key input on competition structures, revenue distributions, and financial regulation. However, there are now greater numbers of issues that the ECA faces today than ever before. These include growing inequalities in finance between clubs, increased workloads for players, and conflicts of interest between the top clubs and regulatory authorities. The controversy surrounding the potential creation of a European Super League has brought into question the autonomy of clubs, the competitive balance of leagues and whether a meritocratic system can continue to operate effectively in European football. This Committee will assess the contribution of the ECA to the governance of European football and will consider measures to achieve sustainable finances, fair competition, and the integrity of the sport in the longer term.",
       chair: {
         name: "Ariel Araya",
         image: "/committee_portraits/Ariel Araya.jpeg",
