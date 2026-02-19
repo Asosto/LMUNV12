@@ -194,7 +194,7 @@ export default function CommitteesPage() {
     },
     {
       name: "European Club Association",
-      acronym: "ECA",
+      acronym: "ECA (Set in 2025)",
       topic: "The Future of European Club Football: The Debate of the Super League proposition and the Fight for the Soul of the Game",
       difficulty: "Intermediate",
       logo: "/committee_logos/ECA Logo.png",
