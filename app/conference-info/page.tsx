@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Globe, MapPin, Download, Award, ArrowRight, Calendar, Info, Mic, Building, Clock, Users, Coffee, Utensils, CheckCircle, DollarSign } from "lucide-react"
+import { Globe, MapPin, Download, Award, ArrowRight, Calendar, Info, Mic, Building, Clock, Users, Coffee, Utensils, CheckCircle, DollarSign, CreditCard } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { MobileNav } from "@/components/mobile-nav"
@@ -386,7 +386,27 @@ export default function ConferenceInfoPage() {
             </div>
           </motion.div>
 
-       
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex justify-center mt-12"
+          >
+            <div className="relative bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 max-w-4xl w-full">
+              <h3 className="text-2xl font-bold text-white mb-4 text-center">Payment Information</h3>
+              <Image
+                src="/Payment Info.png"
+                alt="Payment information - Banco Davivienda account details and IBAN"
+                width={800}
+                height={200}
+                className="w-full h-auto rounded-lg"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-blue-600 rounded-full p-4 shadow-lg">
+                <CreditCard className="w-8 h-8 text-white" />
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </section>
 

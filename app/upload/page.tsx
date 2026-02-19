@@ -24,6 +24,7 @@ import {
   CreditCard,
   ArrowRight,
   Shield,
+  DollarSign,
 } from "lucide-react"
 import Link from "next/link"
 import { MobileNav } from "@/components/mobile-nav"
@@ -305,6 +306,55 @@ export default function UploadPage() {
               payment and send you a confirmation within 48 hours.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Registration Fees & Payment Information */}
+      <section className="py-8 pb-12">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto space-y-12">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="flex justify-center"
+            >
+              <div className="relative bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 w-full">
+                <h3 className="text-2xl font-bold text-white mb-4 text-center">Registration Fees</h3>
+                <Image
+                  src="/Costs.png"
+                  alt="Conference Costs"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto rounded-lg"
+                />
+                <div className="absolute -bottom-6 -right-6 bg-blue-600 rounded-full p-4 shadow-lg">
+                  <DollarSign className="w-8 h-8 text-white" />
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="flex justify-center"
+            >
+              <div className="relative bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 w-full">
+                <h3 className="text-2xl font-bold text-white mb-4 text-center">Payment Information</h3>
+                <Image
+                  src="/Payment Info.png"
+                  alt="Payment information - Banco Davivienda account details and IBAN"
+                  width={800}
+                  height={200}
+                  className="w-full h-auto rounded-lg"
+                />
+                <div className="absolute -bottom-6 -left-6 bg-blue-600 rounded-full p-4 shadow-lg">
+                  <CreditCard className="w-8 h-8 text-white" />
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

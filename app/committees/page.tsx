@@ -43,6 +43,7 @@ export default function CommitteesPage() {
       language: "English",
       level: "HS",
       featured: false,
+      backgroundGuide: "LMUN 2026 - OIC Background Guide.pdf",
     },
     {
       name: "Food and Agriculture Organization",
@@ -63,6 +64,7 @@ export default function CommitteesPage() {
       language: "English",
       level: "HS",
       featured: false,
+      backgroundGuide: null,
     },
     {
       name: "Historical United Nations Security Council",
@@ -83,6 +85,7 @@ export default function CommitteesPage() {
       language: "English",
       level: "HS",
       featured: false,
+      backgroundGuide: "LMUN 2026 - Historical Security Council Background Guide.pdf",
     },
     {
       name: "Asamblea Legislativa",
@@ -98,11 +101,12 @@ export default function CommitteesPage() {
       },
       coChair: {
         name: "Emma Neurohr",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/committee_portraits/Emma Neurohr.jpg",
       },
       language: "Spanish",
       level: "HS",
       featured: false,
+      backgroundGuide: "LMUN 2026 - Asamblea Legislativa Guía de antecedentes.pdf",
     },
     {
       name: "United Nations Educational, Scientific and Cultural Organization",
@@ -114,7 +118,7 @@ export default function CommitteesPage() {
         "The global digital divide in education refers to unequal access to technology, digital literacy, reliable connectivity, and the skills required to use technology effectively, creating significant disadvantages for those who cannot actively participate in online learning and other digital educational activities. The rapid and widespread shift to remote learning during the COVID-19 pandemic further revealed and worsened the gap between connected and disconnected learners. The issue shows unequal access to a pillar of development: quality education in an ever-evolving digital era. Furthermore, organizations such as UNICEF and UNESCO highlighted how many regions are unable to prioritize digital infrastructure, technological training, or affordability, which hinders academic performance. Although governments have tried to handout access, responses often weren't enough. Therefore, reinforcing the need for universal and equitable digital resources is vital for students to not have to face technological, social, cultural, and economic disparities, as a consequence for lack of connectivity.",
       chair: {
         name: "Valentina Barzuna",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/committee_portraits/Valentina Barzuna.jpg",
       },
       coChair: {
         name: "Lucía Shum",
@@ -123,6 +127,7 @@ export default function CommitteesPage() {
       language: "English",
       level: "HS",
       featured: false,
+      backgroundGuide: "LMUN 2026 - UNESCO Background Guide.pdf",
     },
     {
       name: "The Global Council on Mutant Affairs (Marvel X-Men)",
@@ -143,6 +148,7 @@ export default function CommitteesPage() {
       language: "English",
       level: "HS",
       featured: false,
+      backgroundGuide: "LMUN 2026 - Special Committee GCMA Background Guide.pdf",
     },
     {
       name: "Ad Hoc United Nations Security Council",
@@ -163,6 +169,7 @@ export default function CommitteesPage() {
       language: "English",
       level: "HS",
       featured: false,
+      backgroundGuide: null,
     },
     {
       name: "Disarmament and International Security Committee",
@@ -183,6 +190,7 @@ export default function CommitteesPage() {
       language: "English",
       level: "HS",
       featured: false,
+      backgroundGuide: "LMUN 2026 - DISEC Background Guide.pdf",
     },
     {
       name: "European Club Association",
@@ -203,6 +211,7 @@ export default function CommitteesPage() {
       language: "English",
       level: "HS",
       featured: false,
+      backgroundGuide: null,
     },
   ]
 
@@ -227,6 +236,7 @@ export default function CommitteesPage() {
       language: "English",
       level: "MS",
       featured: false,
+      backgroundGuide: "LMUN 2026 - UNHRC Background Guide.pdf",
     },
     {
       name: "United Nations Office on Drugs and Crime",
@@ -247,6 +257,7 @@ export default function CommitteesPage() {
       language: "English",
       level: "MS",
       featured: false,
+      backgroundGuide: "LMUN 2026 - UNODC Background Guide .pdf",
     },
     {
       name: "De la Guerra Fría a la Guerra Digital: La OTAN Frente a los Ciberataques",
@@ -267,6 +278,7 @@ export default function CommitteesPage() {
       language: "Spanish",
       level: "MS",
       featured: false,
+      backgroundGuide: "LMUN 2026 - OTAN Guía de antecedentes.pdf",
     },
   ]
 
@@ -438,11 +450,24 @@ export default function CommitteesPage() {
                       </div>
                     </div>
 
-                    <div className="mt-6 pt-6 border-t border-white/10">
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                        <Download className="w-4 h-4 mr-2" />
-                        Download Study Guide
-                      </Button>
+                    <div className="mt-6 pt-6 border-t border-white/10" onClick={(e) => e.stopPropagation()}>
+                      {committee.backgroundGuide ? (
+                        <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" asChild>
+                          <a
+                            href={`/background_guides/${encodeURIComponent(committee.backgroundGuide)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Download className="w-4 h-4 mr-2" />
+                            Download Study Guide
+                          </a>
+                        </Button>
+                      ) : (
+                        <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" disabled>
+                          <Download className="w-4 h-4 mr-2" />
+                          Download Study Guide
+                        </Button>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -542,10 +567,23 @@ export default function CommitteesPage() {
                 </div>
 
                 <div className="pt-6 border-t border-white/10">
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg py-6">
-                    <Download className="w-5 h-5 mr-2" />
-                    Download Study Guide
-                  </Button>
+                  {committees[selectedCommittee].backgroundGuide ? (
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg py-6" asChild>
+                      <a
+                        href={`/background_guides/${encodeURIComponent(committees[selectedCommittee].backgroundGuide)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Download className="w-5 h-5 mr-2" />
+                        Download Study Guide
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg py-6" disabled>
+                      <Download className="w-5 h-5 mr-2" />
+                      Download Study Guide
+                    </Button>
+                  )}
                 </div>
               </div>
             </>
