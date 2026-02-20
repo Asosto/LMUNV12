@@ -97,7 +97,7 @@ export default function CommitteesPage() {
         "El abstencionismo costarricense superó el 40% en las elecciones pasadas (Redondo 2024), alarmando a los ciudadanos sobre la verdadera democracia y confianza política en el país. Esto empezó a activar debates sobre el futuro del voto costarricense, junto con la pregunta del voto como derecho libre o deber obligatorio. Por ende, en este comité de la Asamblea Legislativa, se analizará desde un punto de vista legal, social y político, las consecuencias de las diferentes posturas frente a este conflicto. Se utilizarán modelos internacionales como referencias, incluyendo los de Bélgica y Australia, que han aumentado los niveles de participación ciudadana para desarrollar nuestro propio plan de acción de acuerdo a la práctica del sufragio en Costa Rica. Sin embargo, las estructuras de Bélgica, Australia y otros han sido cuestionadas y criticadas por no garantizar una ciudadanía más informada ni solucionar el desinterés político. De este modo, es crucial evaluar y analizar de múltiples perspectivas los ejemplares extranjeros, al igual que las implicaciones nacionales del derecho al voto para garantizar una participación equitativa y rigor democrático en nuestro propio país.",
       chair: {
         name: "Maria Alexandra Sauter",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/committee_portraits/Mariale Sauter.jpg",
       },
       coChair: {
         name: "Emma Neurohr",
@@ -211,7 +211,7 @@ export default function CommitteesPage() {
       language: "English",
       level: "HS",
       featured: false,
-      backgroundGuide: null,
+      backgroundGuide: "LMUN 2026 - European Club Association Background Guide.pdf",
     },
   ]
 
