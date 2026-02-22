@@ -510,7 +510,7 @@ export default function UploadPage() {
                             {file ? file.name : "Upload Payment Proof"}
                           </h3>
                           <p className="text-gray-300 mb-4">Drag and drop your file here, or click to browse</p>
-                          <p className="text-sm text-gray-400">Supported formats: PDF, JPG, PNG (Max 5MB)</p>
+                          <p className="text-sm text-gray-400">Supported formats: PDF, JPG, PNG or Screenshot (Max 5MB)</p>
                         </label>
                       </div>
                       {file && (
