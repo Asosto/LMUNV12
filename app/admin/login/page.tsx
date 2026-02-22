@@ -23,7 +23,7 @@ export default function AdminLoginPage() {
     e.preventDefault()
     setLoading(true)
     setError("")
-    
+
     try {
       const { data, error: signInError } = await supabase.auth.signInWithPassword({
         email,
@@ -41,9 +41,9 @@ export default function AdminLoginPage() {
         description: "Logged in successfully",
       })
 
-      // The middleware will handle the redirect
-      router.refresh()
-      
+      // Redirect to admin dashboard after successful login
+      router.push('/admin/dashboard')
+
     } catch (error: any) {
       console.error('Login error:', error)
       setError(error.message || 'An error occurred during login')

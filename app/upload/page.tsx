@@ -29,7 +29,7 @@ import {
 import Link from "next/link"
 import { MobileNav } from "@/components/mobile-nav"
 import { v4 as uuidv4 } from 'uuid';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+
 import Image from "next/image"
 import { Footer } from "@/components/Footer"
 
@@ -47,7 +47,6 @@ export default function UploadPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const { toast } = useToast()
-  const supabaseClient = createClientComponentClient();
 
   const committees = [
     "United Nations Security Council (UNSC)",
@@ -146,10 +145,6 @@ export default function UploadPage() {
 
       console.log('Creating submission record:', submissionData)
 
-      // DEBUG: Check current session
-      const { data: sessionData, error: sessionError } = await supabaseClient.auth.getSession();
-      console.log('Current session before insert:', sessionData, 'Session error:', sessionError);
-
       const { data: submission, error: submissionError } = await supabase
         .from('payment_submissions')
         .insert([submissionData])
@@ -163,7 +158,7 @@ export default function UploadPage() {
           .remove([filePath])
           .then(() => console.log('Cleaned up file after failed submission'))
           .catch(err => console.error('Failed to clean up file:', err))
-        
+
         throw new Error(`Failed to create submission: ${submissionError.message}`)
       }
 
@@ -183,7 +178,7 @@ export default function UploadPage() {
         variant: "destructive",
       })
     } finally {
-    setIsSubmitting(false)
+      setIsSubmitting(false)
     }
   }
 
@@ -246,7 +241,7 @@ export default function UploadPage() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
-            <Image src="/logo.png" alt="LMUN Logo" width={60} height={20} />
+              <Image src="/logo.png" alt="LMUN Logo" width={60} height={20} />
               <span className="text-3xl font-bold text-white">LMUN</span>
             </Link>
             <div className="hidden md:flex items-center space-x-8">
