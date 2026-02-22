@@ -28,6 +28,8 @@ import {
   ChevronDown,
   ChevronUp,
   FileText,
+  Menu,
+  X,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -79,6 +81,7 @@ export default function AdminDashboard() {
   const [expandedRow, setExpandedRow] = useState<string | null>(null)
   const [isRealtime, setIsRealtime] = useState(false)
   const [adminEmail, setAdminEmail] = useState("Admin")
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const fetchRef = useRef<() => void>(() => { })
   const router = useRouter()
   const { toast } = useToast()
@@ -315,7 +318,6 @@ export default function AdminDashboard() {
     router.push("/admin/login")
   }
 
-  // ── Nav items ─────────────────────────────────────────────────────────────
   const navItems = [
     { label: "All Submissions", value: "all", count: stats.total },
     { label: "Pending", value: "pending", count: stats.pending },
@@ -324,12 +326,106 @@ export default function AdminDashboard() {
   ]
 
   const statCards = [
-    { label: "Total Submissions", value: stats.total, iconBg: "bg-blue-500/20", iconColor: "text-blue-400", Icon: TrendingUp },
-    { label: "Pending Review", value: stats.pending, iconBg: "bg-yellow-500/20", iconColor: "text-yellow-400", Icon: Clock },
+    { label: "Total", value: stats.total, iconBg: "bg-blue-500/20", iconColor: "text-blue-400", Icon: TrendingUp },
+    { label: "Pending", value: stats.pending, iconBg: "bg-yellow-500/20", iconColor: "text-yellow-400", Icon: Clock },
     { label: "Approved", value: stats.approved, iconBg: "bg-emerald-500/20", iconColor: "text-emerald-400", Icon: CheckCircle },
     { label: "Rejected", value: stats.rejected, iconBg: "bg-red-500/20", iconColor: "text-red-400", Icon: XCircle },
-    { label: "Total Collected (CRC)", value: `₡${stats.totalAmount.toLocaleString()}`, iconBg: "bg-purple-500/20", iconColor: "text-purple-400", Icon: DollarSign },
+    { label: "Collected (CRC)", value: `₡${stats.totalAmount.toLocaleString()}`, iconBg: "bg-purple-500/20", iconColor: "text-purple-400", Icon: DollarSign },
   ]
+
+  // ── Sidebar content (shared between desktop and mobile drawer) ─────────────
+  const SidebarContent = () => (
+    <>
+      {/* Logo */}
+      <div className="p-6 border-b border-white/10 flex items-center justify-between">
+        <Link href="/" className="flex items-center space-x-3" onClick={() => setSidebarOpen(false)}>
+          <Image src="/logo.png" alt="LMUN" width={36} height={36} className="object-contain" />
+          <div>
+            <div className="text-white font-bold text-lg leading-tight">LMUN</div>
+            <div className="text-blue-400 text-xs">Admin Portal</div>
+          </div>
+        </Link>
+        {/* Close button — mobile only */}
+        <button
+          className="lg:hidden text-gray-400 hover:text-white p-1"
+          onClick={() => setSidebarOpen(false)}
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* Navigation */}
+      <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
+        <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider mb-3 px-2">
+          Submissions
+        </p>
+        {navItems.map((item) => (
+          <button
+            key={item.value}
+            onClick={() => { setStatusFilter(item.value); setSidebarOpen(false) }}
+            className={`w-full flex items-center justify-between px-3 py-3 rounded-xl text-sm font-medium transition-all ${statusFilter === item.value
+                ? "bg-blue-600 text-white shadow-lg shadow-blue-600/25"
+                : "text-gray-400 hover:text-white hover:bg-white/5"
+              }`}
+          >
+            <span>{item.label}</span>
+            <span
+              className={`text-xs px-2 py-0.5 rounded-full ${statusFilter === item.value ? "bg-white/20" : "bg-white/10"
+                }`}
+            >
+              {item.count}
+            </span>
+          </button>
+        ))}
+      </nav>
+
+      {/* Export */}
+      <div className="px-4 pb-4 space-y-1 border-t border-white/10 pt-4">
+        <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider mb-3 px-2">
+          Export
+        </p>
+        <button
+          onClick={handleDownloadCSV}
+          className="w-full flex items-center space-x-2.5 px-3 py-3 rounded-xl text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all"
+        >
+          <FileDown className="w-4 h-4 flex-shrink-0" />
+          <span>Export CSV</span>
+        </button>
+        <button
+          onClick={handleDownloadAllProofs}
+          disabled={isDownloadingProofs}
+          className="w-full flex items-center space-x-2.5 px-3 py-3 rounded-xl text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all disabled:opacity-50"
+        >
+          {isDownloadingProofs ? (
+            <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin flex-shrink-0" />
+          ) : (
+            <Archive className="w-4 h-4 flex-shrink-0" />
+          )}
+          <span>{isDownloadingProofs ? "Downloading..." : "Download All Proofs"}</span>
+        </button>
+      </div>
+
+      {/* User + Logout */}
+      <div className="p-4 border-t border-white/10">
+        <div className="flex items-center space-x-3 mb-3 px-2">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+            {adminEmail.charAt(0).toUpperCase()}
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="text-white text-xs font-medium truncate">{adminEmail}</div>
+            <div className="text-gray-500 text-xs">Administrator</div>
+          </div>
+        </div>
+        <button
+          onClick={handleLogout}
+          className="w-full flex items-center space-x-2.5 px-3 py-3 rounded-xl text-sm text-red-400 hover:text-red-300 hover:bg-red-400/10 transition-all"
+        >
+          <LogOut className="w-4 h-4 flex-shrink-0" />
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </>
+  )
 
   // ── Render ────────────────────────────────────────────────────────────────
   return (
@@ -337,117 +433,90 @@ export default function AdminDashboard() {
       className="flex h-screen overflow-hidden"
       style={{ background: "linear-gradient(135deg, #070b14 0%, #0c1a3d 60%, #070b14 100%)" }}
     >
-      {/* ── SIDEBAR ─────────────────────────────────────────────────────── */}
+      {/* ── MOBILE SIDEBAR OVERLAY ──────────────────────────────────────── */}
+      <AnimatePresence>
+        {sidebarOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/60 z-40 lg:hidden"
+              onClick={() => setSidebarOpen(false)}
+            />
+            {/* Drawer */}
+            <motion.aside
+              key="drawer"
+              initial={{ x: -280 }}
+              animate={{ x: 0 }}
+              exit={{ x: -280 }}
+              transition={{ type: "spring", damping: 25, stiffness: 250 }}
+              className="fixed inset-y-0 left-0 w-72 z-50 flex flex-col border-r border-white/10 lg:hidden"
+              style={{ background: "rgba(7,11,20,0.98)", backdropFilter: "blur(20px)" }}
+            >
+              <SidebarContent />
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* ── DESKTOP SIDEBAR ─────────────────────────────────────────────── */}
       <aside
-        className="w-64 flex-shrink-0 flex flex-col border-r border-white/10"
+        className="hidden lg:flex w-64 flex-shrink-0 flex-col border-r border-white/10"
         style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(20px)" }}
       >
-        {/* Logo */}
-        <div className="p-6 border-b border-white/10">
-          <Link href="/" className="flex items-center space-x-3">
-            <Image src="/logo.png" alt="LMUN" width={36} height={36} className="object-contain" />
-            <div>
-              <div className="text-white font-bold text-lg leading-tight">LMUN</div>
-              <div className="text-blue-400 text-xs">Admin Portal</div>
-            </div>
-          </Link>
-        </div>
-
-        {/* Navigation */}
-        <nav className="flex-1 p-4 space-y-1">
-          <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider mb-3 px-2">
-            Submissions
-          </p>
-          {navItems.map((item) => (
-            <button
-              key={item.value}
-              onClick={() => setStatusFilter(item.value)}
-              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${statusFilter === item.value
-                  ? "bg-blue-600 text-white shadow-lg shadow-blue-600/25"
-                  : "text-gray-400 hover:text-white hover:bg-white/5"
-                }`}
-            >
-              <span>{item.label}</span>
-              <span
-                className={`text-xs px-2 py-0.5 rounded-full ${statusFilter === item.value ? "bg-white/20" : "bg-white/10"
-                  }`}
-              >
-                {item.count}
-              </span>
-            </button>
-          ))}
-        </nav>
-
-        {/* Export */}
-        <div className="px-4 pb-4 space-y-1 border-t border-white/10 pt-4">
-          <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider mb-3 px-2">
-            Export
-          </p>
-          <button
-            onClick={handleDownloadCSV}
-            className="w-full flex items-center space-x-2.5 px-3 py-2.5 rounded-xl text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all"
-          >
-            <FileDown className="w-4 h-4" />
-            <span>Export CSV</span>
-          </button>
-          <button
-            onClick={handleDownloadAllProofs}
-            disabled={isDownloadingProofs}
-            className="w-full flex items-center space-x-2.5 px-3 py-2.5 rounded-xl text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all disabled:opacity-50"
-          >
-            {isDownloadingProofs ? (
-              <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />
-            ) : (
-              <Archive className="w-4 h-4" />
-            )}
-            <span>{isDownloadingProofs ? "Downloading..." : "Download All Proofs"}</span>
-          </button>
-        </div>
-
-        {/* User + Logout */}
-        <div className="p-4 border-t border-white/10">
-          <div className="flex items-center space-x-3 mb-3 px-2">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
-              {adminEmail.charAt(0).toUpperCase()}
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="text-white text-xs font-medium truncate">{adminEmail}</div>
-              <div className="text-gray-500 text-xs">Administrator</div>
-            </div>
-          </div>
-          <button
-            onClick={handleLogout}
-            className="w-full flex items-center space-x-2.5 px-3 py-2.5 rounded-xl text-sm text-red-400 hover:text-red-300 hover:bg-red-400/10 transition-all"
-          >
-            <LogOut className="w-4 h-4" />
-            <span>Sign Out</span>
-          </button>
-        </div>
+        <SidebarContent />
       </aside>
 
       {/* ── MAIN CONTENT ─────────────────────────────────────────────────── */}
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1 overflow-auto min-w-0">
         {/* Top Bar */}
         <div
-          className="sticky top-0 z-10 px-8 py-4 border-b border-white/10 flex items-center justify-between"
+          className="sticky top-0 z-30 px-4 lg:px-8 py-4 border-b border-white/10"
           style={{ background: "rgba(7,11,20,0.85)", backdropFilter: "blur(20px)" }}
         >
-          <div>
-            <h1 className="text-white text-xl font-bold">Payment Dashboard</h1>
-            <p className="text-gray-400 text-sm">LMUN 2026 — Conference Registrations</p>
-          </div>
-          <div className="flex items-center space-x-4">
-            {/* Realtime indicator */}
-            <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5">
+          <div className="flex items-center gap-3">
+            {/* Hamburger — mobile only */}
+            <button
+              className="lg:hidden text-gray-400 hover:text-white flex-shrink-0 p-1"
+              onClick={() => setSidebarOpen(true)}
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+
+            <div className="flex-1 min-w-0">
+              <h1 className="text-white text-lg lg:text-xl font-bold truncate">Payment Dashboard</h1>
+              <p className="text-gray-400 text-xs lg:text-sm hidden sm:block">LMUN 2026 — Conference Registrations</p>
+            </div>
+
+            {/* Realtime badge */}
+            <div className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-full border border-white/10 bg-white/5 flex-shrink-0">
               <div
-                className={`w-2 h-2 rounded-full ${isRealtime ? "bg-emerald-400 animate-pulse" : "bg-gray-500"
+                className={`w-2 h-2 rounded-full flex-shrink-0 ${isRealtime ? "bg-emerald-400 animate-pulse" : "bg-gray-500"
                   }`}
               />
-              <span className="text-xs text-gray-400">
-                {isRealtime ? "Live Updates On" : "Connecting..."}
+              <span className="text-xs text-gray-400 hidden sm:inline">
+                {isRealtime ? "Live" : "..."}
               </span>
             </div>
-            {/* Search */}
+          </div>
+
+          {/* Search — full width below header on mobile */}
+          <div className="relative mt-3 lg:hidden">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <input
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search delegates..."
+              className="w-full pl-9 pr-4 py-2.5 rounded-xl text-sm text-white placeholder:text-gray-500 border border-white/15 focus:border-blue-400/50 focus:outline-none transition-all"
+              style={{ background: "rgba(255,255,255,0.06)" }}
+            />
+          </div>
+
+          {/* Desktop search — inline */}
+          <div className="hidden lg:block absolute right-8 top-4">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
@@ -461,23 +530,23 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="p-8 space-y-6">
-          {/* ── STAT CARDS ──────────────────────────────────────────────── */}
-          <div className="grid grid-cols-5 gap-4">
+        <div className="p-4 lg:p-8 space-y-4 lg:space-y-6">
+          {/* ── STAT CARDS ─── 2 cols mobile → 3 cols md → 5 cols lg ────── */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4">
             {statCards.map((card, i) => (
               <motion.div
                 key={card.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.06 }}
-                className="rounded-2xl p-5 border border-white/10"
+                className="rounded-2xl p-4 lg:p-5 border border-white/10"
                 style={{ background: "rgba(255,255,255,0.04)" }}
               >
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${card.iconBg}`}>
-                  <card.Icon className={`w-5 h-5 ${card.iconColor}`} />
+                <div className={`w-9 h-9 lg:w-10 lg:h-10 rounded-xl flex items-center justify-center mb-3 ${card.iconBg}`}>
+                  <card.Icon className={`w-4 h-4 lg:w-5 lg:h-5 ${card.iconColor}`} />
                 </div>
-                <div className="text-2xl font-bold text-white">{card.value}</div>
-                <div className="text-gray-400 text-sm mt-1">{card.label}</div>
+                <div className="text-xl lg:text-2xl font-bold text-white">{card.value}</div>
+                <div className="text-gray-400 text-xs lg:text-sm mt-1">{card.label}</div>
               </motion.div>
             ))}
           </div>
@@ -487,30 +556,30 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 }}
-            className="rounded-2xl p-6 border border-white/10"
+            className="rounded-2xl p-4 lg:p-6 border border-white/10"
             style={{ background: "rgba(255,255,255,0.04)" }}
           >
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 lg:mb-6">
               <div>
-                <h3 className="text-white font-semibold text-lg">Submissions Overview</h3>
-                <p className="text-gray-400 text-sm">Last 7 days</p>
+                <h3 className="text-white font-semibold text-base lg:text-lg">Submissions Overview</h3>
+                <p className="text-gray-400 text-xs lg:text-sm">Last 7 days</p>
               </div>
-              <div className="flex items-center space-x-5 text-sm">
-                <div className="flex items-center space-x-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-blue-400" />
+              <div className="flex items-center space-x-4 text-xs lg:text-sm">
+                <div className="flex items-center space-x-1.5">
+                  <div className="w-2 h-2 rounded-full bg-blue-400" />
                   <span className="text-gray-400">Total</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+                <div className="flex items-center space-x-1.5">
+                  <div className="w-2 h-2 rounded-full bg-emerald-400" />
                   <span className="text-gray-400">Approved</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+                <div className="flex items-center space-x-1.5">
+                  <div className="w-2 h-2 rounded-full bg-yellow-400" />
                   <span className="text-gray-400">Pending</span>
                 </div>
               </div>
             </div>
-            <ResponsiveContainer width="100%" height={200}>
+            <ResponsiveContainer width="100%" height={160}>
               <AreaChart data={chartData}>
                 <defs>
                   <linearGradient id="colorTotal" x1="0" y1="0" x2="0" y2="1">
@@ -523,53 +592,26 @@ export default function AdminDashboard() {
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                <XAxis
-                  dataKey="date"
-                  stroke="#6b7280"
-                  tick={{ fill: "#6b7280", fontSize: 12 }}
-                />
-                <YAxis
-                  stroke="#6b7280"
-                  tick={{ fill: "#6b7280", fontSize: 12 }}
-                  allowDecimals={false}
-                />
+                <XAxis dataKey="date" stroke="#6b7280" tick={{ fill: "#6b7280", fontSize: 11 }} />
+                <YAxis stroke="#6b7280" tick={{ fill: "#6b7280", fontSize: 11 }} allowDecimals={false} width={24} />
                 <Tooltip
                   contentStyle={{
                     background: "rgba(7,11,20,0.95)",
                     border: "1px solid rgba(255,255,255,0.1)",
                     borderRadius: "12px",
                     color: "white",
-                    fontSize: "13px",
+                    fontSize: "12px",
                   }}
                   cursor={{ stroke: "rgba(255,255,255,0.1)" }}
                 />
-                <Area
-                  type="monotone"
-                  dataKey="total"
-                  stroke="#3b82f6"
-                  strokeWidth={2}
-                  fill="url(#colorTotal)"
-                />
-                <Area
-                  type="monotone"
-                  dataKey="approved"
-                  stroke="#10b981"
-                  strokeWidth={2}
-                  fill="url(#colorApproved)"
-                />
-                <Area
-                  type="monotone"
-                  dataKey="pending"
-                  stroke="#f59e0b"
-                  strokeWidth={2}
-                  fill="none"
-                  strokeDasharray="5 5"
-                />
+                <Area type="monotone" dataKey="total" stroke="#3b82f6" strokeWidth={2} fill="url(#colorTotal)" />
+                <Area type="monotone" dataKey="approved" stroke="#10b981" strokeWidth={2} fill="url(#colorApproved)" />
+                <Area type="monotone" dataKey="pending" stroke="#f59e0b" strokeWidth={2} fill="none" strokeDasharray="5 5" />
               </AreaChart>
             </ResponsiveContainer>
           </motion.div>
 
-          {/* ── SUBMISSIONS TABLE ────────────────────────────────────────── */}
+          {/* ── SUBMISSIONS — card list on mobile, table on desktop ───────── */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -577,210 +619,260 @@ export default function AdminDashboard() {
             className="rounded-2xl border border-white/10 overflow-hidden"
             style={{ background: "rgba(255,255,255,0.04)" }}
           >
-            <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between">
-              <h3 className="text-white font-semibold text-lg">
+            <div className="px-4 lg:px-6 py-4 border-b border-white/10 flex items-center justify-between">
+              <h3 className="text-white font-semibold text-base lg:text-lg">
                 {statusFilter === "all"
                   ? "All Submissions"
                   : `${statusFilter.charAt(0).toUpperCase() + statusFilter.slice(1)} Submissions`}
-                <span className="ml-2 text-sm font-normal text-gray-400">
-                  ({submissions.length})
-                </span>
+                <span className="ml-2 text-sm font-normal text-gray-400">({submissions.length})</span>
               </h3>
               <button
                 onClick={() => fetchSubmissions()}
                 className="text-sm text-blue-400 hover:text-blue-300 transition-colors px-3 py-1.5 rounded-lg hover:bg-blue-400/10"
               >
-                Refresh ↻
+                ↻ Refresh
               </button>
             </div>
 
             {loading ? (
-              <div className="flex items-center justify-center py-24">
+              <div className="flex items-center justify-center py-20">
                 <div className="w-10 h-10 border-2 border-blue-400 border-t-transparent rounded-full animate-spin" />
               </div>
             ) : submissions.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-24 text-gray-500">
+              <div className="flex flex-col items-center justify-center py-20 text-gray-500">
                 <FileText className="w-16 h-16 mb-4 opacity-20" />
-                <p className="text-lg font-medium">No submissions found</p>
+                <p className="text-base font-medium">No submissions found</p>
                 <p className="text-sm mt-1">
                   {searchTerm ? "Try a different search term." : "Submissions will appear here in real-time."}
                 </p>
               </div>
             ) : (
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-white/10">
-                      {[
-                        "Delegate",
-                        "School",
-                        "Committee",
-                        "Method",
-                        "Amount",
-                        "Status",
-                        "Date",
-                        "Actions",
-                      ].map((h) => (
-                        <th
-                          key={h}
-                          className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider"
+              <>
+                {/* ── MOBILE: Card list ───────────────────────────────── */}
+                <div className="lg:hidden divide-y divide-white/5">
+                  {submissions.map((sub) => {
+                    const scfg = statusConfig[sub.status]
+                    const isExpanded = expandedRow === sub.id
+                    return (
+                      <div
+                        key={sub.id}
+                        className="p-4 hover:bg-white/5 transition-colors"
+                      >
+                        {/* Card header */}
+                        <div
+                          className="flex items-start justify-between gap-3 cursor-pointer"
+                          onClick={() => setExpandedRow(isExpanded ? null : sub.id)}
                         >
-                          {h}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {submissions.map((sub, i) => {
-                      const scfg = statusConfig[sub.status]
-                      const isExpanded = expandedRow === sub.id
-                      return (
-                        <AnimatePresence key={sub.id}>
-                          <motion.tr
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: i * 0.02 }}
-                            className="border-b border-white/5 hover:bg-white/5 cursor-pointer transition-colors"
-                            onClick={() => setExpandedRow(isExpanded ? null : sub.id)}
-                          >
-                            <td className="px-5 py-4">
-                              <div className="text-white font-medium text-sm">
-                                {sub.delegate_name}
-                              </div>
-                              <div className="text-gray-500 text-xs mt-0.5">{sub.email}</div>
-                            </td>
-                            <td className="px-5 py-4 text-gray-300 text-sm max-w-[140px]">
-                              <span className="block truncate">{sub.school}</span>
-                            </td>
-                            <td className="px-5 py-4 text-gray-300 text-sm max-w-[160px]">
-                              <span className="block truncate text-xs leading-relaxed">
-                                {sub.committee}
-                              </span>
-                            </td>
-                            <td className="px-5 py-4 text-gray-300 text-sm">{sub.payment_method}</td>
-                            <td className="px-5 py-4 text-white text-sm font-semibold">
-                              ₡{sub.amount?.toLocaleString() || "N/A"}
-                            </td>
-                            <td className="px-5 py-4">
-                              <span
-                                className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border ${scfg.bg} ${scfg.color}`}
-                              >
-                                <scfg.Icon className="w-3 h-3 mr-1.5" />
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span className="text-white font-semibold text-sm">{sub.delegate_name}</span>
+                              <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold border ${scfg.bg} ${scfg.color}`}>
+                                <scfg.Icon className="w-3 h-3 mr-1" />
                                 {scfg.label}
                               </span>
-                            </td>
-                            <td className="px-5 py-4 text-gray-400 text-xs">
-                              {format(parseISO(sub.created_at), "MMM d, yyyy")}
-                            </td>
-                            <td className="px-5 py-4">
-                              <div
-                                className="flex items-center space-x-1"
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                <button
-                                  onClick={() => handleDownload(sub.file_path, sub.delegate_name)}
-                                  className="p-1.5 text-blue-400 hover:text-blue-300 hover:bg-blue-400/10 rounded-lg transition-all"
-                                  title="Download proof"
-                                >
-                                  <Download className="w-4 h-4" />
-                                </button>
-                                {sub.status === "pending" && (
-                                  <>
-                                    <button
-                                      onClick={() => handleStatusChange(sub.id, "approved")}
-                                      disabled={actionLoading[sub.id]}
-                                      className="p-1.5 text-emerald-400 hover:text-emerald-300 hover:bg-emerald-400/10 rounded-lg transition-all disabled:opacity-50"
-                                      title="Approve"
-                                    >
-                                      <CheckCircle className="w-4 h-4" />
-                                    </button>
-                                    <button
-                                      onClick={() => handleStatusChange(sub.id, "rejected")}
-                                      disabled={actionLoading[sub.id]}
-                                      className="p-1.5 text-red-400 hover:text-red-300 hover:bg-red-400/10 rounded-lg transition-all disabled:opacity-50"
-                                      title="Reject"
-                                    >
-                                      <XCircle className="w-4 h-4" />
-                                    </button>
-                                  </>
-                                )}
-                                {(sub.status === "approved" || sub.status === "rejected") && (
-                                  <button
-                                    onClick={() => handleStatusChange(sub.id, "pending")}
-                                    disabled={actionLoading[sub.id]}
-                                    className="p-1.5 text-yellow-400 hover:text-yellow-300 hover:bg-yellow-400/10 rounded-lg transition-all disabled:opacity-50"
-                                    title="Revert to pending"
-                                  >
-                                    <Clock className="w-4 h-4" />
-                                  </button>
-                                )}
-                                <div className="p-1.5 text-gray-600 pointer-events-none">
-                                  {isExpanded ? (
-                                    <ChevronUp className="w-4 h-4" />
-                                  ) : (
-                                    <ChevronDown className="w-4 h-4" />
-                                  )}
-                                </div>
-                              </div>
-                            </td>
-                          </motion.tr>
+                            </div>
+                            <div className="text-gray-400 text-xs mt-1 truncate">{sub.email}</div>
+                            <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
+                              <span className="text-white font-semibold">₡{sub.amount?.toLocaleString()}</span>
+                              <span>·</span>
+                              <span>{sub.payment_method}</span>
+                              <span>·</span>
+                              <span>{format(parseISO(sub.created_at), "MMM d")}</span>
+                            </div>
+                          </div>
+                          <div className="text-gray-500 flex-shrink-0 mt-1">
+                            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                          </div>
+                        </div>
 
-                          {/* ── Expanded detail row ───────────────────────── */}
+                        {/* Expanded detail */}
+                        <AnimatePresence>
                           {isExpanded && (
-                            <tr
-                              key={`${sub.id}-detail`}
-                              className="border-b border-white/5"
-                              style={{ background: "rgba(59,130,246,0.05)" }}
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden"
                             >
-                              <td colSpan={8} className="px-5 py-5">
-                                <div className="grid grid-cols-4 gap-6 text-sm">
+                              <div className="mt-4 space-y-3 text-sm border-t border-white/10 pt-4">
+                                <div className="grid grid-cols-2 gap-3">
                                   <div>
-                                    <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">
-                                      Email
-                                    </p>
-                                    <p className="text-white">{sub.email}</p>
+                                    <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">School</p>
+                                    <p className="text-white text-xs">{sub.school}</p>
                                   </div>
                                   <div>
-                                    <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">
-                                      Full Committee
-                                    </p>
+                                    <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Committee</p>
                                     <p className="text-white text-xs leading-relaxed">{sub.committee}</p>
                                   </div>
                                   <div>
-                                    <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">
-                                      Additional Notes
-                                    </p>
-                                    <p className="text-gray-300 italic text-xs">
-                                      {sub.notes || "No notes provided"}
-                                    </p>
+                                    <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Submitted</p>
+                                    <p className="text-white text-xs">{format(parseISO(sub.created_at), "MMM d, yyyy · HH:mm")}</p>
                                   </div>
                                   <div>
-                                    <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">
-                                      Submitted At
-                                    </p>
-                                    <p className="text-white text-xs">
-                                      {format(parseISO(sub.created_at), "MMM d, yyyy · HH:mm")}
-                                    </p>
+                                    <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Notes</p>
+                                    <p className="text-gray-300 text-xs italic">{sub.notes || "None"}</p>
+                                  </div>
+                                </div>
+
+                                {/* Mobile action buttons */}
+                                <div className="flex flex-wrap gap-2 pt-1">
+                                  <button
+                                    onClick={() => handleDownload(sub.file_path, sub.delegate_name)}
+                                    className="flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs text-blue-400 bg-blue-400/10 hover:bg-blue-400/20 transition-all font-medium"
+                                  >
+                                    <Download className="w-3.5 h-3.5" />
+                                    <span>Download Proof</span>
+                                  </button>
+                                  {sub.status === "pending" && (
+                                    <>
+                                      <button
+                                        onClick={() => handleStatusChange(sub.id, "approved")}
+                                        disabled={actionLoading[sub.id]}
+                                        className="flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs text-emerald-400 bg-emerald-400/10 hover:bg-emerald-400/20 transition-all font-medium disabled:opacity-50"
+                                      >
+                                        <CheckCircle className="w-3.5 h-3.5" />
+                                        <span>{actionLoading[sub.id] ? "..." : "Approve"}</span>
+                                      </button>
+                                      <button
+                                        onClick={() => handleStatusChange(sub.id, "rejected")}
+                                        disabled={actionLoading[sub.id]}
+                                        className="flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs text-red-400 bg-red-400/10 hover:bg-red-400/20 transition-all font-medium disabled:opacity-50"
+                                      >
+                                        <XCircle className="w-3.5 h-3.5" />
+                                        <span>{actionLoading[sub.id] ? "..." : "Reject"}</span>
+                                      </button>
+                                    </>
+                                  )}
+                                  {(sub.status === "approved" || sub.status === "rejected") && (
                                     <button
-                                      onClick={() =>
-                                        handleDownload(sub.file_path, sub.delegate_name)
-                                      }
-                                      className="mt-2 text-blue-400 hover:text-blue-300 text-xs transition-colors flex items-center space-x-1"
+                                      onClick={() => handleStatusChange(sub.id, "pending")}
+                                      disabled={actionLoading[sub.id]}
+                                      className="flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs text-yellow-400 bg-yellow-400/10 hover:bg-yellow-400/20 transition-all font-medium disabled:opacity-50"
                                     >
-                                      <Download className="w-3 h-3" />
-                                      <span>Download Payment Proof</span>
+                                      <Clock className="w-3.5 h-3.5" />
+                                      <span>{actionLoading[sub.id] ? "..." : "Revert"}</span>
                                     </button>
+                                  )}
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    )
+                  })}
+                </div>
+
+                {/* ── DESKTOP: Full table ─────────────────────────────── */}
+                <div className="hidden lg:block overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-white/10">
+                        {["Delegate", "School", "Committee", "Method", "Amount", "Status", "Date", "Actions"].map((h) => (
+                          <th key={h} className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            {h}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {submissions.map((sub, i) => {
+                        const scfg = statusConfig[sub.status]
+                        const isExpanded = expandedRow === sub.id
+                        return (
+                          <AnimatePresence key={sub.id}>
+                            <motion.tr
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: i * 0.02 }}
+                              className="border-b border-white/5 hover:bg-white/5 cursor-pointer transition-colors"
+                              onClick={() => setExpandedRow(isExpanded ? null : sub.id)}
+                            >
+                              <td className="px-5 py-4">
+                                <div className="text-white font-medium text-sm">{sub.delegate_name}</div>
+                                <div className="text-gray-500 text-xs mt-0.5">{sub.email}</div>
+                              </td>
+                              <td className="px-5 py-4 text-gray-300 text-sm max-w-[140px]">
+                                <span className="block truncate">{sub.school}</span>
+                              </td>
+                              <td className="px-5 py-4 max-w-[160px]">
+                                <span className="text-gray-300 text-xs leading-relaxed block truncate">{sub.committee}</span>
+                              </td>
+                              <td className="px-5 py-4 text-gray-300 text-sm">{sub.payment_method}</td>
+                              <td className="px-5 py-4 text-white text-sm font-semibold">₡{sub.amount?.toLocaleString() || "N/A"}</td>
+                              <td className="px-5 py-4">
+                                <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border ${scfg.bg} ${scfg.color}`}>
+                                  <scfg.Icon className="w-3 h-3 mr-1.5" />
+                                  {scfg.label}
+                                </span>
+                              </td>
+                              <td className="px-5 py-4 text-gray-400 text-xs">
+                                {format(parseISO(sub.created_at), "MMM d, yyyy")}
+                              </td>
+                              <td className="px-5 py-4">
+                                <div className="flex items-center space-x-1" onClick={(e) => e.stopPropagation()}>
+                                  <button onClick={() => handleDownload(sub.file_path, sub.delegate_name)} className="p-1.5 text-blue-400 hover:text-blue-300 hover:bg-blue-400/10 rounded-lg transition-all" title="Download proof">
+                                    <Download className="w-4 h-4" />
+                                  </button>
+                                  {sub.status === "pending" && (
+                                    <>
+                                      <button onClick={() => handleStatusChange(sub.id, "approved")} disabled={actionLoading[sub.id]} className="p-1.5 text-emerald-400 hover:text-emerald-300 hover:bg-emerald-400/10 rounded-lg transition-all disabled:opacity-50" title="Approve">
+                                        <CheckCircle className="w-4 h-4" />
+                                      </button>
+                                      <button onClick={() => handleStatusChange(sub.id, "rejected")} disabled={actionLoading[sub.id]} className="p-1.5 text-red-400 hover:text-red-300 hover:bg-red-400/10 rounded-lg transition-all disabled:opacity-50" title="Reject">
+                                        <XCircle className="w-4 h-4" />
+                                      </button>
+                                    </>
+                                  )}
+                                  {(sub.status === "approved" || sub.status === "rejected") && (
+                                    <button onClick={() => handleStatusChange(sub.id, "pending")} disabled={actionLoading[sub.id]} className="p-1.5 text-yellow-400 hover:text-yellow-300 hover:bg-yellow-400/10 rounded-lg transition-all disabled:opacity-50" title="Revert to pending">
+                                      <Clock className="w-4 h-4" />
+                                    </button>
+                                  )}
+                                  <div className="p-1.5 text-gray-600 pointer-events-none">
+                                    {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                                   </div>
                                 </div>
                               </td>
-                            </tr>
-                          )}
-                        </AnimatePresence>
-                      )
-                    })}
-                  </tbody>
-                </table>
-              </div>
+                            </motion.tr>
+
+                            {/* Expanded detail row */}
+                            {isExpanded && (
+                              <tr key={`${sub.id}-detail`} className="border-b border-white/5" style={{ background: "rgba(59,130,246,0.05)" }}>
+                                <td colSpan={8} className="px-5 py-5">
+                                  <div className="grid grid-cols-4 gap-6 text-sm">
+                                    <div>
+                                      <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Email</p>
+                                      <p className="text-white">{sub.email}</p>
+                                    </div>
+                                    <div>
+                                      <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Full Committee</p>
+                                      <p className="text-white text-xs leading-relaxed">{sub.committee}</p>
+                                    </div>
+                                    <div>
+                                      <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Additional Notes</p>
+                                      <p className="text-gray-300 italic text-xs">{sub.notes || "No notes provided"}</p>
+                                    </div>
+                                    <div>
+                                      <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">Submitted At</p>
+                                      <p className="text-white text-xs">{format(parseISO(sub.created_at), "MMM d, yyyy · HH:mm")}</p>
+                                      <button onClick={() => handleDownload(sub.file_path, sub.delegate_name)} className="mt-2 text-blue-400 hover:text-blue-300 text-xs transition-colors flex items-center space-x-1">
+                                        <Download className="w-3 h-3" />
+                                        <span>Download Proof</span>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                            )}
+                          </AnimatePresence>
+                        )
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </>
             )}
           </motion.div>
         </div>
