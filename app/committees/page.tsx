@@ -46,27 +46,6 @@ export default function CommitteesPage() {
       backgroundGuide: "LMUN 2026 - OIC Background Guide.pdf",
     },
     {
-      name: "Food and Agriculture Organization",
-      acronym: "FAO",
-      topic: "Food Security: establishing consumerism rights in the 21st century",
-      difficulty: "Beginner",
-      logo: "/committee_logos/FAO Logo.jpg",
-      description:
-        "In the contemporary global system, food security has also come to refer to safety, transparency, and consumer confidence in food, apart from the commonly recognized issue of food availability. With the extension of the global food system, the growing disparity in the food handling standards of different nations regarding food labeling, certification, limits of pesticide residues on food, etc., has now emerged as an issue related to food safety, creating public health hazards as well as hindering international food trade. Another factor related to food security is the practice of the use of vague and misleading descriptions of food, which has now come to compromise the public's food selection capabilities as well. Some have argued to execute stricter measures in food security through the implementation of the harmonized food security standards of various countries, while others have argued to implement these measures gradually to ensure food security of the food vendors as well.",
-      chair: {
-        name: "Valentina Cañas",
-        image: "/placeholder.svg?height=80&width=80",
-      },
-      coChair: {
-        name: "Galia Luconi",
-        image: "/committee_portraits/Galia Luconi.jpeg",
-      },
-      language: "English",
-      level: "HS",
-      featured: false,
-      backgroundGuide: null,
-    },
-    {
       name: "Historical United Nations Security Council",
       acronym: "Historical UNSC",
       topic: "Checkpoint Crisis: The Berlin Wall Committee",
@@ -279,6 +258,27 @@ export default function CommitteesPage() {
       level: "MS",
       featured: false,
       backgroundGuide: "LMUN 2026 - OTAN Guía de antecedentes.pdf",
+    },
+    {
+      name: "Food and Agriculture Organization",
+      acronym: "FAO",
+      topic: "Food Security: establishing consumerism rights in the 21st century",
+      difficulty: "Beginner",
+      logo: "/committee_logos/FAO Logo.jpg",
+      description:
+        "In the contemporary global system, food security has also come to refer to safety, transparency, and consumer confidence in food, apart from the commonly recognized issue of food availability. With the extension of the global food system, the growing disparity in the food handling standards of different nations regarding food labeling, certification, limits of pesticide residues on food, etc., has now emerged as an issue related to food safety, creating public health hazards as well as hindering international food trade. Another factor related to food security is the practice of the use of vague and misleading descriptions of food, which has now come to compromise the public's food selection capabilities as well. Some have argued to execute stricter measures in food security through the implementation of the harmonized food security standards of various countries, while others have argued to implement these measures gradually to ensure food security of the food vendors as well.",
+      chair: {
+        name: "Valentina Cañas",
+        image: "/placeholder.svg?height=80&width=80",
+      },
+      coChair: {
+        name: "Galia Luconi",
+        image: "/committee_portraits/Galia Luconi.jpeg",
+      },
+      language: "English",
+      level: "HS",
+      featured: false,
+      backgroundGuide: null,
     },
   ]
 
