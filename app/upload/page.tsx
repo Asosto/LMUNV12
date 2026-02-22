@@ -49,12 +49,18 @@ export default function UploadPage() {
   const { toast } = useToast()
 
   const committees = [
-    "United Nations Security Council (UNSC)",
-    "General Assembly First Committee (GA1)",
-    "Economic and Social Council (ECOSOC)",
-    "World Health Organization (WHO)",
-    "International Court of Justice (ICJ)",
-    "UN Environment Programme (UNEP)",
+    "Organization of Islamic Cooperation (OIC)",
+    "Historical United Nations Security Council",
+    "Asamblea Legislativa",
+    "United Nations Educational, Scientific and Cultural Organization (UNESCO)",
+    "The Global Council on Mutant Affairs (Marvel X-Men)",
+    "Ad Hoc United Nations Security Council",
+    "Disarmament and International Security Committee (DISEC)",
+    "European Club Association",
+    "United Nations Human Rights Council (UNHRC)",
+    "United Nations Office on Drugs and Crime (UNODC)",
+    "De la Guerra Fría a la Guerra Digital: La OTAN Frente a los Ciberataques",
+    "Food and Agriculture Organization (FAO)",
   ]
 
   const paymentMethods = ["Bank Transfer", "SINPE"]
