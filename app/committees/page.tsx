@@ -278,7 +278,7 @@ export default function CommitteesPage() {
       language: "English",
       level: "HS",
       featured: false,
-      backgroundGuide: null,
+      backgroundGuide: "LMUN 2026 - Food and Agriculture Organization Background Guide.pdf",
     },
   ]
 
