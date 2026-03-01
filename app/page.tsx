@@ -247,7 +247,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 p-6 sm:p-8 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20"
           >
             <Badge className="w-fit shrink-0 bg-blue-600/20 text-blue-300 border-blue-400/30 text-base sm:text-lg font-bold uppercase px-4 py-2">
