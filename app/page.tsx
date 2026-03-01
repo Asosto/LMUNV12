@@ -183,7 +183,7 @@ export default function HomePage() {
       </section>
 
       {/* Registration Steps */}
-      <section className="py-20 relative">
+      <section className="pt-20 pb-8 sm:pb-10 relative">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -236,6 +236,26 @@ export default function HomePage() {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </a>
             </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Notice (mini section) */}
+      <section className="pt-4 pb-8 sm:pt-5 sm:pb-10 px-4 sm:px-6">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 p-6 sm:p-8 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20"
+          >
+            <Badge className="w-fit shrink-0 bg-blue-600/20 text-blue-300 border-blue-400/30 text-base sm:text-lg font-bold uppercase px-4 py-2">
+              Notice
+            </Badge>
+            <p className="text-gray-300 text-sm sm:text-base leading-relaxed flex-1">
+              Please bring your own water bottles to the conference this weekend (we won&apos;t provide cups)! Also, please be aware that Uber Eats/food delivery orders are not allowed. Food is complimentary, so no need to worry! If you really want to, you can also bring your own food from home.
+            </p>
           </motion.div>
         </div>
       </section>
