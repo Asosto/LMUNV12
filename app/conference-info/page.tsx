@@ -188,7 +188,7 @@ export default function ConferenceInfoPage() {
                   {
                     name: "Group 1",
                     events: [
-                      { time: "8:30 am – 10:00 am", title: "Opening Ceremony", type: "ceremony", location: "Lincoln Auditorium", description: "Welcome address by the Secretariat and panel speakers" },
+                      { time: "9:00 am – 10:00 am", title: "Opening Ceremony", type: "ceremony", location: "Lincoln Auditorium", description: "Welcome address by the Secretariat and panel speakers" },
                       { time: "10:00 am – 10:15 am", title: "Snack", type: "break", location: "Outside Committee Classrooms", description: "Refreshments and snacks!" },
                       { time: "10:15 am – 12:15 pm", title: "Committee Session 1", type: "session", location: "Committee Rooms", description: "First formal committee session" },
                       { time: "10:30 am – 11:15 am", title: "Faculty Advisor Meeting", type: "special", location: "HS Building - 2nd Floor Teachers Lounge", description: "Meeting for faculty advisors" },
@@ -203,7 +203,7 @@ export default function ConferenceInfoPage() {
                   {
                     name: "Group 2",
                     events: [
-                      { time: "8:30 am – 10:00 am", title: "Opening Ceremony", type: "ceremony", location: "Lincoln Auditorium", description: "Welcome address by the Secretariat and panel speakers" },
+                      { time: "9:00 am – 10:00 am", title: "Opening Ceremony", type: "ceremony", location: "Lincoln Auditorium", description: "Welcome address by the Secretariat and panel speakers" },
                       { time: "10:00 am – 10:15 am", title: "Snack", type: "break", location: "Outside Committee Classrooms", description: "Refreshments and snacks!" },
                       { time: "10:15 am – 12:30 pm", title: "Committee Session 1", type: "session", location: "Committee Rooms", description: "First formal committee session" },
                       { time: "10:30 am – 11:15 am", title: "Faculty Advisor Meeting", type: "special", location: "HS Building - 2nd Floor Teachers Lounge", description: "Meeting for faculty advisors" },
