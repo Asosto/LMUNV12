@@ -244,9 +244,9 @@ export default function HomePage() {
       <section className="pt-4 pb-8 sm:pt-5 sm:pb-10 px-4 sm:px-6">
         <div className="container mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8, delay: 1 }}
             viewport={{ once: true }}
             className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 p-6 sm:p-8 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20"
           >
