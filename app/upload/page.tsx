@@ -473,7 +473,7 @@ export default function UploadPage() {
                         </div>
                         <div>
                           <Label htmlFor="amount" className="text-white mb-2 block">
-                            Payment Amount (CRC - Example: 25,000) *
+                            Payment Amount (CRC - Example: 25000) *
                           </Label>
                           <Input
                             id="amount"
