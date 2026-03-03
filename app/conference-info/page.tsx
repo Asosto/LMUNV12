@@ -188,9 +188,9 @@ export default function ConferenceInfoPage() {
                   {
                     name: "Group 1",
                     events: [
-                      { time: "9:00 am – 10:00 am", title: "Opening Ceremony", type: "ceremony", location: "Lincoln Auditorium", description: "Welcome address by the Secretariat and panel speakers" },
-                      { time: "10:00 am – 10:15 am", title: "Snack", type: "break", location: "Outside Committee Classrooms", description: "Refreshments and snacks!" },
-                      { time: "10:15 am – 12:15 pm", title: "Committee Session 1", type: "session", location: "Committee Rooms", description: "First formal committee session" },
+                      { time: "9:00 am – 10:15 am", title: "Opening Ceremony", type: "ceremony", location: "Lincoln Auditorium", description: "Welcome address by the Secretariat and panel speakers" },
+                      { time: "10:15 am – 10:30 am", title: "Snack", type: "break", location: "Outside Committee Classrooms", description: "Refreshments and snacks!" },
+                      { time: "10:30 am – 12:15 pm", title: "Committee Session 1", type: "session", location: "Committee Rooms", description: "First formal committee session" },
                       { time: "10:30 am – 11:15 am", title: "Faculty Advisor Meeting", type: "special", location: "HS Building - 2nd Floor Teachers Lounge", description: "Meeting for faculty advisors" },
                       { time: "12:15 pm – 1:00 pm", title: "Lunch", type: "meal", location: "Tentative", description: "Lunch/Break Time!" },
                       { time: "1:00 pm – 3:15 pm", title: "Committee Session 2", type: "session", location: "Committee Rooms", description: "Second formal committee session" },
@@ -203,9 +203,9 @@ export default function ConferenceInfoPage() {
                   {
                     name: "Group 2",
                     events: [
-                      { time: "9:00 am – 10:00 am", title: "Opening Ceremony", type: "ceremony", location: "Lincoln Auditorium", description: "Welcome address by the Secretariat and panel speakers" },
-                      { time: "10:00 am – 10:15 am", title: "Snack", type: "break", location: "Outside Committee Classrooms", description: "Refreshments and snacks!" },
-                      { time: "10:15 am – 12:30 pm", title: "Committee Session 1", type: "session", location: "Committee Rooms", description: "First formal committee session" },
+                      { time: "9:00 am – 10:15 am", title: "Opening Ceremony", type: "ceremony", location: "Lincoln Auditorium", description: "Welcome address by the Secretariat and panel speakers" },
+                      { time: "10:15 am – 10:30 am", title: "Snack", type: "break", location: "Outside Committee Classrooms", description: "Refreshments and snacks!" },
+                      { time: "10:30 am – 12:30 pm", title: "Committee Session 1", type: "session", location: "Committee Rooms", description: "First formal committee session" },
                       { time: "10:30 am – 11:15 am", title: "Faculty Advisor Meeting", type: "special", location: "HS Building - 2nd Floor Teachers Lounge", description: "Meeting for faculty advisors" },
                       { time: "12:30 pm – 1:15 pm", title: "Lunch", type: "meal", location: "Tentative", description: "Lunch/Break Time!" },
                       { time: "1:15 pm – 3:30 pm", title: "Committee Session 2", type: "session", location: "Committee Rooms", description: "Second formal committee session" },
