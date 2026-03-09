@@ -24,7 +24,7 @@ export default function GalleryPage() {
     },
     {
       year: "2026",
-      driveLink: "https://drive.google.com/drive/folders/183briE1bZ979-PtgxDzhw5SZ4XuD0Jwz?usp=sharing",
+      driveLink: "https://drive.google.com/drive/folders/1XMERX7mqV0tBSQs_IpgqdfMxPNPXM2JN",
       image: "/Gallery3.JPG",
     },
   ]
