@@ -354,6 +354,41 @@ export default function ConferenceInfoPage() {
         </div>
       </section>
 
+      {/* Conference Map Section */}
+      <section className="py-12 bg-gradient-to-r from-blue-900/30 to-purple-900/30">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">CONFERENCE MAP</h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex justify-center"
+          >
+            <div className="relative bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 max-w-3xl w-full">
+              <Image
+                src="/MAP_LMUN2026.jpeg"
+                alt="LMUN 2026 conference map"
+                width={850}
+                height={600}
+                className="w-full h-auto rounded-lg"
+                priority
+              />
+              <div className="absolute -bottom-6 -left-6 bg-blue-600 rounded-full p-4 shadow-lg">
+                <MapPin className="w-8 h-8 text-white" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Fee Structure */}
       <section className="py-12 bg-gradient-to-r from-blue-900/30 to-purple-900/30">
         <div className="container mx-auto px-6">

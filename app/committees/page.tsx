@@ -132,7 +132,7 @@ export default function CommitteesPage() {
     {
       name: "Ad Hoc United Nations Security Council",
       acronym: "Ad Hoc United Nations Security Council",
-      topic: "The study guide and topic will be revealed the day the conference starts!",
+      topic: "The study guide and topic was revealed on Saturday: The South Sudan Humanitarian Crisis.",
       difficulty: "Advanced",
       logo: "/committee_logos/UN-Logo.png",
       description:
@@ -148,7 +148,7 @@ export default function CommitteesPage() {
       language: "English",
       level: "HS",
       featured: false,
-      backgroundGuide: null,
+      backgroundGuide: "LMUN 2026 - Ad Hoc Security Council Background Guide.pdf",
     },
     {
       name: "Food and Agriculture Organization",
